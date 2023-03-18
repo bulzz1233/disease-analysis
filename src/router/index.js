@@ -1,13 +1,14 @@
 import VueRouter from 'vue-router';
 
 const router = new VueRouter({
-
-    routes:[
+    routes: [
         {
-
-        }
-    ]
-})
+            path: '/',
+            name: 'App',
+            component:()=>import ('@/components/HelloWorld.vue' )  ,
+        },
+    ],
+});
 
 // 后置路由守卫
 router.afterEach((to, from) => {
