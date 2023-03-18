@@ -4,8 +4,8 @@ const router = new VueRouter({
     routes: [
         {
             path: '/',
-            name: 'App',
-            component:()=>import ('@/components/HelloWorld.vue' )  ,
+            name: 'home',
+            component:()=>import ('@/components/base/home.vue' )  ,
         },
     ],
 });
