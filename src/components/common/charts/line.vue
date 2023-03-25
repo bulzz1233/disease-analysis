@@ -5,14 +5,10 @@
 </template>
 
 <script>
-import * as echarts from 'echarts/core';
-import { CanvasRenderer } from 'echarts/renderers';
-import {  LineChart } from 'echarts/charts';
-import { UniversalTransition } from 'echarts/features';
-import { TitleComponent,  ToolboxComponent,GridComponent,TooltipComponent, LegendComponent } from 'echarts/components';
+
+
 import VChart, { THEME_KEY } from 'vue-echarts';
 
-echarts.use([CanvasRenderer,ToolboxComponent,GridComponent,UniversalTransition,LineChart, TitleComponent, TooltipComponent, LegendComponent]);
 
 export default {
     name: 'sLine',
