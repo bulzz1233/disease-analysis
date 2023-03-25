@@ -1,0 +1,65 @@
+{
+  "id": "3962820",
+  "name": "disease",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "579741",
+      "name": "用户",
+      "font_class": "user",
+      "unicode": "e788",
+      "unicode_decimal": 59272
+    },
+    {
+      "icon_id": "1718321",
+      "name": "返回",
+      "font_class": "return",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "2261375",
+      "name": "实时数据分析",
+      "font_class": "zhexiantu",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "4508441",
+      "name": "数据分析线性",
+      "font_class": "fengxi",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "4881695",
+      "name": "数据分析-01",
+      "font_class": "bingtu",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "6616997",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "eca0",
+      "unicode_decimal": 60576
+    },
+    {
+      "icon_id": "11671984",
+      "name": "词云",
+      "font_class": "ciyun",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "33851533",
+      "name": "数据分析",
+      "font_class": "shujufenxi",
+      "unicode": "e75f",
+      "unicode_decimal": 59231
+    }
+  ]
+}

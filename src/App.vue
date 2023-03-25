@@ -22,6 +22,7 @@ body {
 }
 body {
     margin: 0;
+    overflow-x: hidden;
 }
 ::-webkit-scrollbar {
     width: 0px;
@@ -39,12 +40,19 @@ body {
 }
 @media screen and (min-width: 640px) {
     html {
-        font-size: 13px;
+        font-size: 11px;
     }
 }
 @media screen and (min-width: 1080px) {
     html {
-        font-size: 15px;
+        font-size: 12px;
     }
+    
+}
+@media screen and (min-width: 2000px) {
+    html {
+        font-size: 14px;
+    }
+    
 }
 </style>

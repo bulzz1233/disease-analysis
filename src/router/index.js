@@ -2,11 +2,13 @@ import VueRouter from 'vue-router';
 
 const router = new VueRouter({
     routes: [
+      
         {
-            path: '/',
-            name: 'home',
-            component:()=>import ('@/components/base/home.vue' )  ,
+            path:'/analysis',
+            name:'analysis',
+            component: ()=>import('@/pages/analysis.vue'),
         },
+ 
     ],
 });
 
