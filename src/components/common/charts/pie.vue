@@ -21,8 +21,8 @@ export default {
         return {
             option: {
                 title: {
-                    text: 'Referer of a Website',
-                    subtext: 'Fake Data',
+                    text: this.name,
+                    // subtext: 'Fake Data',
                     left: 'center',
                 },
                 tooltip: {
@@ -37,20 +37,14 @@ export default {
                 },
                 series: [
                     {
-                        name: '我的运动偏好',
+                        name: this.name,
                         type: 'pie',
                         //半径
                         radius: '55%',
                         //圆心位置
                         center: ['50%', '40%'],
                         //传数据
-                        data: [
-                            { value: 1048, name: 'Search Engine' },
-                            { value: 735, name: 'Direct' },
-                            { value: 580, name: 'Email' },
-                            { value: 484, name: 'Union Ads' },
-                            { value: 300, name: 'Video Ads' },
-                        ],
+                        data: this.list,
                         emphasis: {
                             itemStyle: {
                                 shadowBlur: 10,
@@ -63,8 +57,11 @@ export default {
             },
         };
     },
-    methods: {},
+    methods: {
+        
+    },
     created() {},
+    props:['name','list']
 };
 </script>
 <style scoped>

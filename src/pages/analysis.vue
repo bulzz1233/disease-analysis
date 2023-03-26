@@ -7,7 +7,7 @@
             </div>
             <div class="chart_layout">
                 <sLine ></sLine>
-                <pie></pie>
+                <pie :name="pie_name" :list="pie_list"></pie>
             </div>
         </div>
     </div>
@@ -17,21 +17,31 @@
 import collapse from '@/components/common/collapse.vue';
 import sLine from '@/components/common/charts/line';
 import pie from '@/components/common/charts/pie';
-import Pie from '@/components/common/charts/pie.vue';
 export default {
     name: 'chunyu',
     data() {
-        return {};
+        return {
+            pie_name:'疾病类型分析'
+        };
     },
     methods: {},
+    computed:{
+        pie_list(){
+            return  this.$store.state.chunyuData.testData
+        }
+    },
     components: {
         collapse,
         sLine,
         pie,
-        Pie,
     },
 
-    created() {},
+    mounted() {
+        console.log(1);
+        console.log(this.$store.state.chunyuData.AllDisease);
+         
+    },
+
 };
 </script>
 <style scoped>
