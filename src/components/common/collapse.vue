@@ -4,11 +4,27 @@
         <el-collapse v-model="activeNames" @change="handleChange">
             <el-collapse-item title="春雨医生平台分析" name="2">
                 <ul class="list">
-                    <li class="list_item" :class="{active:index==isActive}" @click="changeBackground(index)" v-for="(i, index) in list.slice(0, 4)" :key="index">{{i}}</li>
+                    <li
+                        class="list_item"
+                        :class="{ active: index == isActive }"
+                        @click="change(index)"
+                        v-for="(i, index) in list.slice(0, 4)"
+                        :key="index"
+                    >
+                        {{ i }}
+                    </li>
                 </ul>
             </el-collapse-item>
             <el-collapse-item title="好大夫平台分析" name="3">
-                <li class="list_item" :class="{active:index+4==isActive}" @click="changeBackground(index+4)" v-for="(i, index) in list.slice(4, list.length)" :key="index">{{i}}</li>
+                <li
+                    class="list_item"
+                    :class="{ active: index + 4 == isActive }"
+                    @click="change(index + 4)"
+                    v-for="(i, index) in list.slice(4, list.length)"
+                    :key="index"
+                >
+                    {{ i }}
+                </li>
             </el-collapse-item>
         </el-collapse>
     </div>
@@ -19,7 +35,7 @@ export default {
     name: 'collapse',
     data() {
         return {
-            isActive:0,
+            isActive: 0,
             activeNames: ['2'],
             list: [
                 '平台问诊数据分布分析',
@@ -29,27 +45,37 @@ export default {
                 '平台评价数据分布分析',
                 '评价患者分布地区分析',
                 '患者评价文本词频分析',
-                '患者评价文本词频分析'
-
-                    
-
+                '患者评价文本主题分析',
+            ],
+            router_name: [
+                'c_distribution',
+                'c_wordFrequency',
+                'c_topic',
+                'c_communication',
+                'h_comment',
+                'h_patient',
+                'h_commentText',
+                'h_commentTopic',
             ],
         };
     },
     methods: {
-        handleChange(val) {
-            console.log(val);
-        },
         goHome() {
             this.$router.push({
                 path: '/',
             });
         },
-        changeBackground(index){
-            this.isActive = index
-        }
+        change(index) {
+            if (this.$route.name != this.router_name[index]) {
+                this.isActive = index;
+                //加判断是否为当前路径
+                this.$router.push({
+                    name: this.router_name[index],
+                });
+            }
+        },
     },
-    created() {},
+    mounted() {},
 };
 </script>
 <style scoped>
@@ -67,6 +93,7 @@ export default {
 .goHome:hover {
     background: #3e5c4e;
 }
+
 .list_item:hover {
     background: #3e5c4e;
 }
@@ -80,8 +107,8 @@ export default {
 /deep/.el-collapse {
     border-top: 0;
 }
-/deep/.el-collapse-item__content{
-    padding-bottom:0 ;
+/deep/.el-collapse-item__content {
+    padding-bottom: 0;
 }
 .goHome {
     height: 48px;
@@ -99,13 +126,13 @@ export default {
     outline: 0;
     padding-left: 1rem;
 }
-.list{
+.list {
     list-style: none;
     margin: 0;
     padding: 0;
 }
-.list_item{
-        height: 48px;
+.list_item {
+    height: 48px;
     color: white;
     display: flex;
     align-items: center;
@@ -119,7 +146,10 @@ export default {
     padding-left: 2rem;
     background: #799c8b;
 }
-.active{
+.active {
     background: #3e5c4e;
+}
+.layout {
+    overflow: hidden;
 }
 </style>

@@ -1,18 +1,17 @@
 <template>
-  <div id="app">
-      <home/>
-            
-  </div>
+    <div id="app">
+        <home />
+    </div>
 </template>
 
 <script>
-import home from "@/components/base/home";
+import home from '@/components/base/home';
 export default {
-  name: 'App',
-  components: {
-    home
-  }
-}
+    name: 'App',
+    components: {
+        home,
+    },
+};
 </script>
 
 <style>
@@ -22,15 +21,15 @@ body {
 }
 body {
     margin: 0;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 ::-webkit-scrollbar {
     width: 0px;
 }
 
-#app{
-  width: 100%;
-  height: 100%;
+#app {
+    width: 100%;
+    height: 100%;
 }
 
 @media screen and (min-width: 320px) {
@@ -47,12 +46,10 @@ body {
     html {
         font-size: 12px;
     }
-    
 }
 @media screen and (min-width: 2000px) {
     html {
         font-size: 14px;
     }
-    
 }
 </style>

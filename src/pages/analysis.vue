@@ -5,9 +5,9 @@
             <div class="meun">
                 <collapse />
             </div>
-            <div class="chart_layout">
-                <sLine ></sLine>
-                <pie :name="pie_name" :list="pie_list"></pie>
+            <div class="chart_layout analysis_background">
+            <router-view :key="$route.name" > </router-view>
+
             </div>
         </div>
     </div>
@@ -15,33 +15,19 @@
 
 <script>
 import collapse from '@/components/common/collapse.vue';
-import sLine from '@/components/common/charts/line';
-import pie from '@/components/common/charts/pie';
+
 export default {
     name: 'chunyu',
     data() {
         return {
-            pie_name:'疾病类型分析'
+            pie_name: '疾病类型分析',
         };
     },
     methods: {},
-    computed:{
-        pie_list(){
-            return  this.$store.state.chunyuData.testData
-        }
-    },
+
     components: {
         collapse,
-        sLine,
-        pie,
     },
-
-    mounted() {
-        console.log(1);
-        console.log(this.$store.state.chunyuData.AllDisease);
-         
-    },
-
 };
 </script>
 <style scoped>
@@ -84,5 +70,8 @@ export default {
     width: 100%;
     height: 100%;
     overflow: scroll;
+}
+.analysis_background {
+    background-image: linear-gradient(-60deg, #e1f7ed, #e5efd8, #e1f7ed);
 }
 </style>

@@ -2,8 +2,12 @@ import * as $api from '@/api/index';
 export default {
     name: 'chunyuData',
     namespaced: true,
-    action: {},
-    mutations: {},
+    action: {
+        
+    },
+    mutations: {
+        
+    },
     state: {
         //所有疾病数据
         AllDisease: ['1', '2', 'ss'],

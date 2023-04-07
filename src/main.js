@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
-import { Button, Collapse, CollapseItem } from 'element-ui';
+import { Button,Icon,Input, Collapse, CollapseItem } from 'element-ui';
 //主题
 import './assets/theme/index.css';
 //字体图标
@@ -12,8 +12,8 @@ import axios from 'axios';
 //配置echart
 import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import { LineChart, PieChart } from 'echarts/charts';
-import { UniversalTransition } from 'echarts/features';
+import { LineChart, PieChart,BarChart } from 'echarts/charts';
+import { UniversalTransition,LabelLayout } from 'echarts/features';
 import {
     TitleComponent,
     ToolboxComponent,
@@ -30,17 +30,20 @@ echarts.use([
     TitleComponent,
     TooltipComponent,
     LegendComponent,
-    PieChart
+    PieChart,
+    BarChart,
+    LabelLayout
 ]);
 
 Vue.prototype.$axios = axios;
-
 Vue.config.productionTip = false;
 
 Vue.use(Button);
 Vue.use(Collapse);
 Vue.use(CollapseItem);
 Vue.use(VueRouter);
+Vue.use(Icon);
+Vue.use(Input);
 
 new Vue({
     render: h => h(App),

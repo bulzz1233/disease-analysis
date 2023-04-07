@@ -40,7 +40,7 @@ export default {
     methods: {
         enterAnalysis() {
             this.$router.push({
-                name: 'analysis',
+                name: 'c_distribution',
             });
         },
     },
@@ -117,6 +117,7 @@ export default {
     overflow: hidden;
     margin-top: 3rem;
     margin-bottom: 10rem;
+    /* cursor: wait; */
 }
 .btn:hover {
     box-shadow: 10px 10px 99px 6px rgba(131, 168, 150, 1);

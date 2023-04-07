@@ -1,13 +1,11 @@
 <template>
     <div class="box">
-            <enter class="enter" v-show="mainShow" />
+        <enter class="enter" v-show="mainShow" />
 
-        
-            <div v-show="mainShow" class="bfc"></div>
-        
+        <div v-show="mainShow" class="bfc"></div>
 
         <transition name="fade">
-            <router-view ></router-view>
+            <router-view></router-view>
         </transition>
     </div>
 </template>
@@ -21,13 +19,7 @@ export default {
     },
     computed: {
         mainShow() {
-            if (
-                this.$route.path.indexOf('analysis') == -1 
-            ) {
-                return true;
-            } else {
-                return false;
-            }
+            return this.$route.path.indexOf('analysis') == -1 ? true : false;
         },
     },
     methods: {},
@@ -45,6 +37,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .bfc {
