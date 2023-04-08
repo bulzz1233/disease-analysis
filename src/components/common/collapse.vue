@@ -60,6 +60,9 @@ export default {
         };
     },
     methods: {
+        handleChange(val) {
+            console.log(val);
+        },
         goHome() {
             this.$router.push({
                 path: '/',

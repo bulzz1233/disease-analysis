@@ -6,8 +6,9 @@
                 <collapse />
             </div>
             <div class="chart_layout analysis_background">
-            <router-view :key="$route.name" > </router-view>
-
+                <transition name="fade">
+                    <router-view :key="$route.name"></router-view>
+                </transition>
             </div>
         </div>
     </div>
@@ -24,6 +25,9 @@ export default {
         };
     },
     methods: {},
+    mounted() {
+        
+    },
 
     components: {
         collapse,
@@ -73,5 +77,12 @@ export default {
 }
 .analysis_background {
     background-image: linear-gradient(-60deg, #e1f7ed, #e5efd8, #e1f7ed);
+}
+.fade-enter-active,
+.fade-leave-active {
+    transition: all ease-in-out 0.5s;
+}
+.fade-enter, .fade-leave /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
 }
 </style>

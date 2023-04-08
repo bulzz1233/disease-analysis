@@ -35,7 +35,9 @@ echarts.use([
     LabelLayout
 ]);
 
+
 Vue.prototype.$axios = axios;
+Vue.prototype.$echarts = echarts;
 Vue.config.productionTip = false;
 
 Vue.use(Button);

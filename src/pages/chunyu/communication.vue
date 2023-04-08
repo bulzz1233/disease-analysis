@@ -8,7 +8,9 @@ export default {
         return {};
     },
     methods: {},
-    created() {},
+    mounted() {
+        console.log(11);
+    },
 };
 </script>
 <style scoped>

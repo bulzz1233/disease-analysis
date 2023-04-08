@@ -1,24 +1,14 @@
 <template>
-  <div>
-    h_1
-  </div>
+    <div>h_1</div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-
-    }
-  },
-  methods: {
-
-  },
-  created() {
-
-  },
-}
+    data() {
+        return {};
+    },
+    methods: {},
+    created() {},
+};
 </script>
-<style scoped>
-
-</style>
+<style scoped></style>

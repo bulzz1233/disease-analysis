@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <v-chart class="chart" :option="option" />
+        <v-chart class="chart" :option="option" ref="s" />
     </div>
 </template>
 
@@ -19,13 +19,12 @@ export default {
         return {
             option: {
                 title: {
-                    text: 'Stacked Line',
+                    text: this.name,
                 },
                 tooltip: {
                     trigger: 'axis',
                 },
                 legend: {
-                
                     // data: [],
                 },
                 //调整网格位置
@@ -35,58 +34,45 @@ export default {
                     bottom: '3%',
                     containLabel: true,
                 },
-                toolbox: {
-                    feature: {
-                        saveAsImage: {},
-                    },
+                legend: {
+                    // data: [],
+                    top: '5%',
+                    right: '1%',
                 },
                 //横坐标
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    data: this.xAxis,
                 },
                 yAxis: {
                     type: 'value',
                 },
                 //数据
-                series: [
-                    {
-                        name: 'Email',
-                        type: 'line',
-                        stack: 'Total',
-                        data: [120, 132, 101, 134, 90, 230, 210],
-                    },
-                    {
-                        name: 'Union Ads',
-                        type: 'line',
-                        stack: 'Total',
-                        data: [220, 182, 191, 234, 290, 330, 310],
-                    },
-                    {
-                        name: 'Video Ads',
-                        type: 'line',
-                        stack: 'Total',
-                        data: [150, 232, 201, 154, 190, 330, 410],
-                    },
-                    {
-                        name: 'Direct',
-                        type: 'line',
-                        stack: 'Total',
-                        data: [320, 332, 301, 334, 390, 330, 320],
-                    },
-                    {
-                        name: 'Search Engine',
-                        type: 'line',
-                        stack: 'Total',
-                        data: [820, 932, 901, 934, 1290, 1330, 1320],
-                    },
-                ],
+                //    {
+                //         name: 'Email',
+                //         type: 'line',
+                //         stack: 'Total',
+                //         data: [120, 132, 101, 134, 90, 230, 210],
+                //     },
+                series: this.list,
             },
         };
     },
-    methods: {},
-    created() {},
+    methods: {
+        chartsResize() {
+            console.log(1);
+            this.$refs.s.resize();
+        },
+    },
+    mounted() {
+        window.addEventListener('resize', this.chartsResize);
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.chartsResize, false);
+    },
+
+    props: ['name', 'xAxis', 'list'],
 };
 </script>
 <style scoped>
