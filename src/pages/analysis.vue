@@ -5,11 +5,12 @@
             <div class="meun">
                 <collapse />
             </div>
-            <div class="chart_layout analysis_background">
+            <div class="chart_layout ">
                 <transition name="fade">
                     <router-view :key="$route.name"></router-view>
                 </transition>
             </div>
+            
         </div>
     </div>
 </template>
@@ -69,15 +70,14 @@ export default {
     background: #64927c;
     height: 100%;
     overflow: hidden;
+    min-width: 20.625rem;
+
 }
 .chart_layout {
     width: 100%;
     height: 100%;
-    overflow: scroll;
 }
-.analysis_background {
-    background-image: linear-gradient(-60deg, #e1f7ed, #e5efd8, #e1f7ed);
-}
+
 .fade-enter-active,
 .fade-leave-active {
     transition: all ease-in-out 0.5s;

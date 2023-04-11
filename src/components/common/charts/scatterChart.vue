@@ -1,14 +1,13 @@
 <template>
     <div class="layout">
-        <v-chart class="chart" :option="option" />
+        <v-chart class="chart" :option="option" ref="s" />
     </div>
 </template>
 
 <script>
 import VChart, { THEME_KEY } from 'vue-echarts';
-
 export default {
-    name: 'pie',
+    name: 'scatterChart',
     components: {
         VChart,
     },
@@ -18,52 +17,56 @@ export default {
     data() {
         return {
             option: {
-                title: {
-                    text: this.name,
+                   title: {
+                    text: 'x疾病-高频词%TOP30',
                     // subtext: 'Fake Data',
+                },
+                xAxis: {
+                    xAxis: {
+                        data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                    },
                 },
                 tooltip: {
                     trigger: 'item',
-                    //
-                    // formatter: '{a} <br/>{b} : {c} ({d}%)',
                 },
                 legend: {
-                    right: '1%',
+                    right: '10%',
                     top: '5%',
 
                     // data: [],
                 },
+                yAxis: {},
                 series: [
                     {
-                        name: this.name,
-                        type: 'pie',
-                        //半径
-                        radius: '65%',
-                        //圆心位置
-                        center: ['50%', '55%'],
-                        //传数据
-                        data: this.list,
-                        emphasis: {
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)',
-                            },
-                        },
+                        name: '数据源1',
+                        symbolSize: 20,
+                        data: [[10,10],[220, 24], [191, 234], [290, 330]],
+                        type: 'scatter',
+                    },
+                    {
+                        name: '数据源2',
+                        symbolSize: 20,
+                        type: 'scatter',
+                        data: [[40,40],[120, 239],[ 294, 50], [144, 230]],
                     },
                 ],
             },
         };
     },
-    methods: {},
+    methods: {
+        chartsResize() {
+            console.log(1);
+            this.$refs.s.resize();
+        },
+    },
     mounted() {
-        console.log(this.type);
         window.addEventListener('resize', this.chartsResize);
     },
     beforeDestroy() {
         window.removeEventListener('resize', this.chartsResize, false);
     },
-    props: ['name', 'list'],
+
+    props: ['name', 'xAxis', 'list'],
 };
 </script>
 <style scoped>

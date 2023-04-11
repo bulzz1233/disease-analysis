@@ -39,13 +39,13 @@ export default {
                     top: '5%',
                 },
                 xAxis: {
-                    type: [this.type][0],
+                    type: 'value',
                     boundaryGap: [0, 0.01],
                     // data:this.xAxis
                 },
                 //数据里的data有多少值要对应相应的坐标值个数
                 yAxis: {
-                    type: [this.type][1],
+                    type: 'category',
                     data: this.yAxis,
                 },
                 // 数据格式  {
@@ -65,13 +65,14 @@ export default {
     },
     created() {},
     mounted() {
+        console.log(this.type);
         window.addEventListener('resize',this.chartsResize);
     },
     beforeDestroy(){
         window.removeEventListener('resize',this.chartsResize,false)
     },
     //type设定表格方向['category','value'],xAxis[]坐标数据，name为标题，list为数据列表
-    props: [' type', 'name', 'xAxis', 'yAxis', 'list'],
+    props: ['name', 'xAxis', 'yAxis', 'list'],
 };
 </script>
 <style scoped>

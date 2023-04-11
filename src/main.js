@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
-import { Button,Icon,Input, Collapse, CollapseItem } from 'element-ui';
+import { Button,RadioGroup,RadioButton,Icon,Input, Form,FormItem,Table,TableColumn,Collapse, CollapseItem } from 'element-ui';
 //主题
 import './assets/theme/index.css';
 //字体图标
@@ -12,7 +12,7 @@ import axios from 'axios';
 //配置echart
 import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import { LineChart, PieChart,BarChart } from 'echarts/charts';
+import { LineChart, PieChart,BarChart,ScatterChart } from 'echarts/charts';
 import { UniversalTransition,LabelLayout } from 'echarts/features';
 import {
     TitleComponent,
@@ -32,7 +32,8 @@ echarts.use([
     LegendComponent,
     PieChart,
     BarChart,
-    LabelLayout
+    LabelLayout,
+    ScatterChart
 ]);
 
 
@@ -46,6 +47,12 @@ Vue.use(CollapseItem);
 Vue.use(VueRouter);
 Vue.use(Icon);
 Vue.use(Input);
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(RadioButton)
+Vue.use(RadioGroup)
+Vue.use(Form)
+Vue.use(FormItem)
 
 new Vue({
     render: h => h(App),

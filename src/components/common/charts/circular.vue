@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <v-chart class="chart init" :option="option" />
+        <v-chart class="chart init" :option="option" ref="s" />
     </div>
 </template>
 
@@ -21,15 +21,21 @@ export default {
                 tooltip: {
                     trigger: 'item',
                 },
+                title: {
+                    text: this.name,
+                },
                 legend: {
-                    top: '5%',
+                    top: '10%',
                     left: 'center',
                 },
                 series: [
                     {
                         name: 'Access From',
                         type: 'pie',
-                        radius: ['40%', '70%'],
+                           //半径
+                        radius: ['50%','70%'],
+                        //圆心位置
+                        center: ['50%', '55%'],
                         avoidLabelOverlap: false,
                         label: {
                             show: false,
@@ -57,9 +63,21 @@ export default {
             },
         };
     },
-    methods: {},
+    methods: {
+        chartsResize(params) {
+            console.log(1);
+            this.$refs.s.resize();
+        },
+    },
     created() {},
-    //props: ['name', 'list'],
+    mounted() {
+        console.log(this.type);
+        window.addEventListener('resize', this.chartsResize);
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.chartsResize, false);
+    },
+    props: ['name'],
 };
 </script>
 <style scoped>

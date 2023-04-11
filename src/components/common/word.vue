@@ -1,5 +1,6 @@
 <template>
-
+    <div>
+        <div class='title'>x疾病-高频词云图</div>
     <wordcloud
         :data="defaultWords"
         nameKey="name"
@@ -10,6 +11,7 @@
         :wordClick="wordClickHandler"
 
     ></wordcloud>
+    </div>
 </template>
 
 <script>
@@ -28,12 +30,83 @@ export default {
     data() {
         return {
             deg: {
-                from: 0,
-                to: 0,
+                from: 0, to: 90, numOfOrientation: 2
                 
             },
             myColors: ['#1f77b4', '#629fc9', '#94bedb', '#c9e0ef'],
             defaultWords: [
+                {
+                    name: 'Cat',
+                    value: 26,
+                },
+                {
+                    name: 'fish',
+                    value: 19,
+                },
+                {
+                    name: 'things',
+                    value: 18,
+                },
+                {
+                    name: 'look',
+                    value: 16,
+                },
+                {
+                    name: 'two',
+                    value: 15,
+                },
+                {
+                    name: 'fun',
+                    value: 9,
+                },
+                {
+                    name: 'know',
+                    value: 9,
+                },
+                {
+                    name: 'good',
+                    value: 9,
+                },
+                {
+                    name: 'play',
+                    value: 6,
+                },
+                {
+                    name: 'Cat',
+                    value: 26,
+                },
+                {
+                    name: 'fish',
+                    value: 19,
+                },
+                {
+                    name: 'things',
+                    value: 18,
+                },
+                {
+                    name: 'look',
+                    value: 16,
+                },
+                {
+                    name: 'two',
+                    value: 15,
+                },
+                {
+                    name: 'fun',
+                    value: 9,
+                },
+                {
+                    name: 'know',
+                    value: 9,
+                },
+                {
+                    name: 'good',
+                    value: 9,
+                },
+                {
+                    name: 'play',
+                    value: 6,
+                },
                 {
                     name: 'Cat',
                     value: 26,
@@ -76,5 +149,11 @@ export default {
 };
 </script>
 <style scoped>
+.title{
+    font-size: 20px;
+    font-weight: bolder;
+    color: #464646;
+    margin-left: 4rem;
+}
 
 </style>

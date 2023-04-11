@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <v-chart class="chart" :option="option" ref="s" />
+        <v-chart class="chart" :option="option" ref="a" />
     </div>
 </template>
 
@@ -8,7 +8,7 @@
 import VChart, { THEME_KEY } from 'vue-echarts';
 
 export default {
-    name: 'wave',
+    name: 'vbar',
     components: {
         VChart,
     },
@@ -23,60 +23,55 @@ export default {
                 },
                 tooltip: {
                     trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow',
+                    },
                 },
-                legend: {
-                    // data: [],
-                },
-                //调整网格位置
                 grid: {
                     left: '3%',
                     right: '4%',
                     bottom: '3%',
                     containLabel: true,
                 },
-                toolbox: {
-                    feature: {
-                        saveAsImage: {},
-                    },
+                legend: {
+                    // data: [],
+                    right: '1%',
+                    top: '5%',
                 },
-                //横坐标
                 xAxis: {
                     type: 'category',
-                    boundaryGap: false,
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    boundaryGap: [0, 0.01],
+                    // data:this.xAxis
                 },
+                //数据里的data有多少值要对应相应的坐标值个数
                 yAxis: {
                     type: 'value',
+                    data: this.yAxis,
                 },
-                //数据
-                series: [
-                    {
-                        data: [150, 230, 224, 218, 135, 147, 260],
-                        type: 'line',
-                        areaStyle: {
-                            color: '#abdfff',
-                            opacity: 0.5,
-                        },
-                    },
-                ],
+                // 数据格式  {
+                //         name: '2011',
+                //         type: 'bar',
+                //         data: [18203, 23489, 29034, 104970, 131744, 630230],
+                //     },
+                series: this.list,
             },
         };
     },
     methods: {
         chartsResize(params) {
-            console.log(1);
-            this.$refs.s.resize();
+            this.$refs.a.resize();
         },
     },
     created() {},
     mounted() {
         console.log(this.type);
-        window.addEventListener('resize', this.chartsResize);
+        window.addEventListener('resize',this.chartsResize);
     },
-    beforeDestroy() {
-        window.removeEventListener('resize', this.chartsResize, false);
+    beforeDestroy(){
+        window.removeEventListener('resize',this.chartsResize,false)
     },
-    props:['name']
+    //type设定表格方向['category','value'],xAxis[]坐标数据，name为标题，list为数据列表
+    props: ['name', 'xAxis', 'yAxis', 'list'],
 };
 </script>
 <style scoped>
