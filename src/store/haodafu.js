@@ -2,7 +2,7 @@ import * as $api from '@/api/index';
 export default {
     name: 'haodafuData',
     namespaced: true,
-    action: {},
+    actions: {},
     mutations: {},
     state: {
         comment_line_list: [

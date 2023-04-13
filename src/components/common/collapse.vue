@@ -82,7 +82,7 @@ export default {
 };
 </script>
 <style scoped>
-/deep/.el-collapse-item__header {
+::v-deep .el-collapse-item__header {
     background: #64927c;
     color: white;
     border: none;
@@ -90,7 +90,7 @@ export default {
     transition: all 0.5s;
     padding-left: 1rem;
 }
-/deep/.el-collapse-item__header:hover {
+::v-deep .el-collapse-item__header:hover {
     background: #3e5c4e;
 }
 .goHome:hover {
@@ -100,17 +100,17 @@ export default {
 .list_item:hover {
     background: #3e5c4e;
 }
-/deep/.el-collapse-item__wrap {
+::v-deep .el-collapse-item__wrap {
     max-width: 21rem;
 }
 
-/deep/.el-icon-arrow-right {
+::v-deep .el-icon-arrow-right {
     margin-right: 2rem;
 }
-/deep/.el-collapse {
+::v-deep .el-collapse {
     border-top: 0;
 }
-/deep/.el-collapse-item__content {
+::v-deep .el-collapse-item__content {
     padding-bottom: 0;
 }
 .goHome {

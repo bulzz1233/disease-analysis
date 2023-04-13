@@ -2,11 +2,48 @@ import * as $api from '@/api/index';
 export default {
     name: 'chunyuData',
     namespaced: true,
-    action: {},
+    actions: {
+        chunyuAllType(context){
+            $api.chunyuAllType().then(
+                response=>{
+                    console.log(response);
+                    context.commit("addChunyuAllType",response.data.data_object)
+                },
+                error=>{
+                    alert(error.message)
+                }
+            )
+        },
+        chunyuConsumerMedicalType(context){
+            $api.chunyuConsumerMedicalType().then(
+                response=>{
+                    console.log(response);
+                    context.commit("addChunyuConsumerMedicalType",response.data.data_object)
+                },
+                error=>{
+                    alert(error.message)
+                }
+            )
+        }
+    },
     mutations: {
-
+        addChunyuAllType(state,obj){
+            obj.forEach(element => {
+                state.chunyuAllType.push(element)
+            });
+        },
+        addChunyuConsumerMedicalType(state,obj){
+            obj.forEach(element => {
+                state.chunyuConsumerMedicalType.push(element)
+            });
+        },
     },
     state: {
+        chunyuAllType:["全部"],
+        chunyuConsumerMedicalType:["全部"],
+
+
+
         //所有疾病数据
         AllDisease: ['1', '2', 'ss'],
         //平台问诊数据分布分析

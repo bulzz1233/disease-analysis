@@ -20,6 +20,7 @@ import {
     GridComponent,
     TooltipComponent,
     LegendComponent,
+    VisualMapComponent
 } from 'echarts/components';
 echarts.use([
     CanvasRenderer,
@@ -33,7 +34,8 @@ echarts.use([
     PieChart,
     BarChart,
     LabelLayout,
-    ScatterChart
+    ScatterChart,
+    VisualMapComponent
 ]);
 
 

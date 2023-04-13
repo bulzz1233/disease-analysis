@@ -75,16 +75,16 @@ export default {
     padding: .7rem;
 }
 
-/deep/.el-collapse-item__header {
+::v-deep .el-collapse-item__header {
     border: 1px solid rgb(231, 231, 231);
     min-width: 20rem;
     transition: all 0.5s;
     padding-left: 1rem;
 }
-/deep/.el-collapse-item__header:hover {
+::v-deep .el-collapse-item__header:hover {
     background: #d4d4d4;
 }
-/deep/.el-collapse-item__content{
+::v-deep .el-collapse-item__content{
     display: flex;
     align-items: center;
     margin-top:1rem ;

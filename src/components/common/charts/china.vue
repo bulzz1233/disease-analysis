@@ -35,35 +35,13 @@ export default {
                 // 热力地图
                 visualMap: {
                     min: 0,
-                    max: 1000,
-                    left: 240,
-
-                    pieces: [
-                        {
-                            gt: 100,
-                            label: '> 100 人',
-                            color: '#45c170',
-                        },
-                        {
-                            gte: 10,
-                            lte: 100,
-                            label: '10 - 100 人',
-                            color: '#bbf8cf',
-                        },
-                        {
-                            gte: 1,
-                            lt: 10,
-                            label: '1 - 9 人',
-                            color: '#d9fae4',
-                        },
-                        {
-                            value: 0,
-                            label: '无',
-                            color: '#e6e6e6',
-                        },
-                    ],
+                    max: 10,
+                    calculable: true,
+                    orient: 'vertical',
+                    left: '1%',
+                    bottom: '1%',
+                    color:['#45c170','#e6e6e6']
                 },
-
                 series: [
                     {
                         name: '患者数',
@@ -104,14 +82,12 @@ export default {
             },
         };
     },
- 
 
     props: ['list'],
 };
 </script>
 <style scoped>
 .layout {
-   
     padding: 4rem;
     width: 70%;
     height: 70%;

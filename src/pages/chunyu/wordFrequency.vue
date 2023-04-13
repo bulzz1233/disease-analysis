@@ -3,7 +3,7 @@
         <search />
         <u-tag :list="tag_list_data" />
         <scatter-chart />
-        <word/>
+        <word />
     </div>
 </template>
 
@@ -14,18 +14,30 @@ import uTag from '@/components/common/uTag.vue';
 import word from '@/components/common/word.vue';
 export default {
     data() {
-        return {
-            tag_list_data: ['全部', '梅毒', '没毒', '美度', '没读', '艾滋', '艾子'],
-        };
+        return {};
     },
     methods: {},
+    computed: {
+        tag_list_data() {
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.chunyuData.chunyuAllType;
+            } else {
+                return this.$store.state.chunyuData.chunyuConsumerMedicalType;
+            }
+        },
+    },
     components: {
         scatterChart,
         search,
         uTag,
         word,
     },
-    created() {},
+    mounted() {
+        Promise.all([
+            this.$store.dispatch('chunyuData/chunyuAllType'),
+            this.$store.dispatch('chunyuData/chunyuConsumerMedicalType'),
+        ]);
+    },
 };
 </script>
 <style scoped>
