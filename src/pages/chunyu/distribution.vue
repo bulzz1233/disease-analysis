@@ -29,16 +29,10 @@ export default {
             ////
             line_name: '春雨医生-全部疾病TOP10时间分布折线图',
             line_Axis: ['mon', 'tue', 'wed'],
-
-            
         };
     },
-    methods: {
-     
-    },
-    mounted() {
-     
-    },
+    methods: {},
+
     computed: {
         bar_list() {
             return this.$store.state.chunyuData.d_bar_list;
@@ -46,7 +40,6 @@ export default {
         line_list() {
             return this.$store.state.chunyuData.d_line_list;
         },
-      
     },
     components: {
         numCount,
