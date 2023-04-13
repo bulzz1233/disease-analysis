@@ -9,6 +9,6 @@ export function chunyuAllType() {
 export function chunyuConsumerMedicalType() {
     return request({
         method:'GET',
-        url:'/chunyu/list/consumerMedical'
+        url:'/chunyu/list/consumer_medical'
     })
 }
