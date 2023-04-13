@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
-import { Button,RadioGroup,RadioButton,Icon,Input, Form,FormItem,Table,TableColumn,Collapse, CollapseItem } from 'element-ui';
+import { Button,RadioGroup,RadioButton,Icon,Input,MessageBox, Form,FormItem,Table,TableColumn,Collapse, CollapseItem } from 'element-ui';
 //主题
 import './assets/theme/index.css';
 //字体图标
@@ -55,6 +55,8 @@ Vue.use(RadioButton)
 Vue.use(RadioGroup)
 Vue.use(Form)
 Vue.use(FormItem)
+Vue.component(MessageBox.name,MessageBox)
+Vue.prototype.$confirm = MessageBox.confirm
 
 new Vue({
     render: h => h(App),

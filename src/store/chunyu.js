@@ -7,7 +7,7 @@ export default {
             $api.chunyuAllType().then(
                 response=>{
                     console.log(response);
-                    context.commit("addChunyuAllType",response.data.data_object)
+                    context.commit("addChunyuAllType",response.data.data.data_object)
                 },
                 error=>{
                     alert(error.message)
@@ -18,7 +18,7 @@ export default {
             $api.chunyuConsumerMedicalType().then(
                 response=>{
                     console.log(response);
-                    context.commit("addChunyuConsumerMedicalType",response.data.data_object)
+                    context.commit("addChunyuConsumerMedicalType",response.data.data.data_object)
                 },
                 error=>{
                     alert(error.message)
