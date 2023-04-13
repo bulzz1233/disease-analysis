@@ -36,7 +36,7 @@ export default {
                 legend: {
                     // data: [],
                     right: '1%',
-                    top: '5%',
+                    top: '2%',
                 },
                 xAxis: {
                     type: 'value',
@@ -57,19 +57,23 @@ export default {
             },
         };
     },
-    methods: {
-        chartsResize(params) {
+      methods: {
+        chartsResize() {
             console.log(1);
             this.$refs.s.resize();
         },
     },
-    created() {},
-    mounted() {
-        console.log(this.type);
-        window.addEventListener('resize',this.chartsResize);
+     mounted(){
+        this.chartsResize();
+
     },
-    beforeDestroy(){
-        window.removeEventListener('resize',this.chartsResize,false)
+    activated() {
+        this.chartsResize();
+
+        window.addEventListener('resize', this.chartsResize);
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.chartsResize, false);
     },
     //type设定表格方向['category','value'],xAxis[]坐标数据，name为标题，list为数据列表
     props: ['name', 'xAxis', 'yAxis', 'list'],

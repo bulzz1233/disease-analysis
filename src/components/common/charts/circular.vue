@@ -64,14 +64,17 @@ export default {
         };
     },
     methods: {
-        chartsResize(params) {
-            console.log(1);
+        chartsResize() {
             this.$refs.s.resize();
         },
     },
-    created() {},
-    mounted() {
-        console.log(this.type);
+     mounted(){
+        this.chartsResize();
+
+    },
+    activated() {
+        this.chartsResize();
+
         window.addEventListener('resize', this.chartsResize);
     },
     beforeDestroy() {

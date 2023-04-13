@@ -36,7 +36,7 @@ export default {
                 },
                 legend: {
                     // data: [],
-                    top: '5%',
+                    top: '4%',
                     right: '1%',
                 },
                 //横坐标
@@ -61,11 +61,16 @@ export default {
     },
     methods: {
         chartsResize() {
-            console.log(1);
             this.$refs.s.resize();
         },
     },
-    mounted() {
+     mounted(){
+        this.chartsResize();
+
+    },
+    activated() {
+        this.chartsResize();
+
         window.addEventListener('resize', this.chartsResize);
     },
     beforeDestroy() {

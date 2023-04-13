@@ -17,7 +17,7 @@ export default {
     data() {
         return {
             option: {
-                   title: {
+                title: {
                     text: 'x疾病-高频词%TOP30',
                     // subtext: 'Fake Data',
                 },
@@ -40,14 +40,24 @@ export default {
                     {
                         name: '数据源1',
                         symbolSize: 20,
-                        data: [[10,10],[220, 24], [191, 234], [290, 330]],
+                        data: [
+                            [10, 10],
+                            [220, 24],
+                            [191, 234],
+                            [290, 330],
+                        ],
                         type: 'scatter',
                     },
                     {
                         name: '数据源2',
                         symbolSize: 20,
                         type: 'scatter',
-                        data: [[40,40],[120, 239],[ 294, 50], [144, 230]],
+                        data: [
+                            [40, 40],
+                            [120, 239],
+                            [294, 50],
+                            [144, 230],
+                        ],
                     },
                 ],
             },
@@ -55,11 +65,16 @@ export default {
     },
     methods: {
         chartsResize() {
-            console.log(1);
             this.$refs.s.resize();
         },
     },
-    mounted() {
+     mounted(){
+        this.chartsResize();
+
+    },
+    activated() {
+        this.chartsResize();
+
         window.addEventListener('resize', this.chartsResize);
     },
     beforeDestroy() {

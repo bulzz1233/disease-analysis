@@ -2,7 +2,10 @@
     <div class="layout">
         <search />
         <u-tag :list="tag_list" />
+        <div class="num">
+
         <num-count :list="num_list" />
+        </div>
         <div class="chart_layout">
             <circular :name="circular" />
             <wave :name="wave" />
@@ -97,6 +100,7 @@ export default {
 .chart_layout {
     display: flex;
     height: 100%;
+    justify-content: center;
 }
 .table {
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
@@ -105,11 +109,18 @@ export default {
     font-size: 20px;
     font-weight: bolder;
     color: #464646;
+    margin-bottom: 2rem;
 }
 .table_layout {
     padding: 4rem;
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+.num{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 </style>

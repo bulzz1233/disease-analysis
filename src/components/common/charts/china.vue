@@ -104,20 +104,8 @@ export default {
             },
         };
     },
-    methods: {
-        chartsResize(params) {
-            console.log(1);
-            this.$refs.s.resize();
-        },
-    },
-    created() {},
-    mounted() {
-        console.log(this.type);
-        window.addEventListener('resize', this.chartsResize);
-    },
-    beforeDestroy() {
-        window.removeEventListener('resize', this.chartsResize, false);
-    },
+ 
+
     props: ['list'],
 };
 </script>

@@ -101,11 +101,11 @@ export default {
     background: #3e5c4e;
 }
 /deep/.el-collapse-item__wrap {
-    max-width: 20rem;
+    max-width: 21rem;
 }
 
 /deep/.el-icon-arrow-right {
-    margin-right: 50px;
+    margin-right: 2rem;
 }
 /deep/.el-collapse {
     border-top: 0;

@@ -1,5 +1,4 @@
 <template>
-    <div>
         <ul class="list_style">
             <li class="list" v-for="(o,index) in list" :key="index">
                 <i :style="{background:o.style}" class=" icon el-icon-s-data"></i>
@@ -9,7 +8,6 @@
                 </div>
             </li>
         </ul>
-    </div>
 </template>
 <script>
 export default {
@@ -30,8 +28,11 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 1rem;
+    padding: 2rem 1rem;
     margin-top: 3rem;
+    width: 90%;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
 }
 .list {
     display: flex;

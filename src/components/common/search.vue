@@ -30,6 +30,7 @@ export default {
 .input_layout {
     display: flex;
     padding: 2rem;
+    padding-left:4rem ;
 }
 .input_style {
     width: 40rem;

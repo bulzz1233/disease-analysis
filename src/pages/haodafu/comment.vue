@@ -1,24 +1,33 @@
 <template>
     <div class="layout">
-        <num-count :list="list" />
-        <div class="charts_layout">
-            <bar
-                :name="bar_name"
-                :xAxis="bar_xAxis"
-                :yAxis="bar_yAxis"
-                :list="bar_list"
-            />
-            <s-line :name="line_name" :xAxis="line_Axis" :list="line_list" ref="s" />
-        </div>
-        <div class="charts_layout1">
-            <vbar
-                :name="bar_name"
-                :xAxis="bar_xAxis"
-                :yAxis="bar_yAxis"
-                :list="bar_list"
-            />
-            <pie :name="pie_name" 
-            :list="pie_list"/>
+        <num-count class="num" :list="list" />
+        <div class="chart">
+            <div class="charts_layout">
+                <bar
+                    class="shadow"
+                    :name="bar_name"
+                    :xAxis="bar_xAxis"
+                    :yAxis="bar_yAxis"
+                    :list="bar_list"
+                />
+                <s-line
+                    class="shadow"
+                    :name="line_name"
+                    :xAxis="line_Axis"
+                    :list="line_list"
+                    ref="s"
+                />
+            </div>
+            <div class="charts_layout1">
+                <vbar
+                    class="shadow"
+                    :name="bar_name"
+                    :xAxis="bar_xAxis"
+                    :yAxis="bar_yAxis"
+                    :list="bar_list"
+                />
+                <pie class="shadow" :name="pie_name" :list="pie_list" />
+            </div>
         </div>
     </div>
 </template>
@@ -28,7 +37,7 @@ import numCount from '@/components/common/numCount.vue';
 import bar from '@/components/common/charts/bar.vue';
 import sLine from '@/components/common/charts/line.vue';
 import pie from '@/components/common/charts/pie.vue';
-import vbar from "@/components/common/charts/v_bar.vue";
+import vbar from '@/components/common/charts/v_bar.vue';
 export default {
     name: 'distribution',
     data() {
@@ -62,17 +71,16 @@ export default {
         line_list() {
             return this.$store.state.haodafuData.comment_line_list;
         },
-        pie_list(){
+        pie_list() {
             return this.$store.state.haodafuData.comment_pie_list;
-
-        }
+        },
     },
     components: {
         numCount,
         bar,
         sLine,
         pie,
-        vbar
+        vbar,
     },
 };
 </script>
@@ -82,22 +90,50 @@ export default {
     flex-direction: column;
     width: 100%;
     height: 100%;
+    align-items: center;
+    justify-content: space-around;
 }
 .charts_layout {
     display: flex;
-    width: 100%;
-    margin-top: 1rem;
+    width: 97%;
+    height: 50%;
+    margin-top: 2rem;
     justify-content: center;
     align-items: center;
     max-height: 40rem;
-    flex: 6;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
 }
 .charts_layout1 {
     display: flex;
-    width: 100%;
-    padding-bottom: 5rem;
+    height: 35%;
+
+    width: 97%;
     justify-content: center;
     align-items: center;
-    flex: 4;
+    margin-top: 2rem;
+    margin-bottom: 7rem;
+    margin-left: 1rem;
+}
+.chart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80%;
+    width: 99%;
+
+}
+
+.num {
+    width: 94%;
+    justify-content: space-around;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+.shadow {
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    margin-right: 2rem;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <v-chart class="chart" :option="option" />
+        <v-chart class="chart" ref="s" :option="option" />
     </div>
 </template>
 
@@ -55,9 +55,18 @@ export default {
             },
         };
     },
-    methods: {},
-    mounted() {
-        console.log(this.type);
+    methods: {
+        chartsResize() {
+            this.$refs.s.resize();
+        },
+    },
+    mounted(){
+        this.chartsResize();
+
+    },
+    activated() {
+        this.chartsResize();
+
         window.addEventListener('resize', this.chartsResize);
     },
     beforeDestroy() {

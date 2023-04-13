@@ -1,17 +1,19 @@
 <template>
     <div class="layout">
-        <analysis-input />
+        <analysis-input class="input" />
         <div class="chart_layout">
-          <circular/>
-          <wave/>
+            <circular class="input1" />
+            <wave class="input1" />
         </div>
-        <topic-list/>
+        <div class="topic">
+            <topic-list />
+        </div>
     </div>
 </template>
 
 <script>
-import analysisInput from '@/components/common/charts/analysisInput.vue';
-import circular from "@/components/common/charts/circular.vue";
+import analysisInput from '@/components/common/analysisInput.vue';
+import circular from '@/components/common/charts/circular.vue';
 import wave from '@/components/common/charts/wave.vue';
 import topicList from '@/components/common/topicList.vue';
 export default {
@@ -23,7 +25,7 @@ export default {
         analysisInput,
         circular,
         wave,
-        topicList
+        topicList,
     },
     created() {},
 };
@@ -32,13 +34,27 @@ export default {
 .layout {
     display: flex;
     flex-direction: column;
-    width: 100%;
     height: 100%;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 .chart_layout {
     display: flex;
+    width: 90%;
+    height: 80%;
+    justify-content: space-around;
+}
+.topic{
+    display: flex;
+    align-items: center;
     width: 100%;
-    height: 100%;
+    justify-content: center;
+}
+.input{
+    padding-bottom:0 ;
+}
+.input1{
+    padding-top: 0;
+
 }
 </style>

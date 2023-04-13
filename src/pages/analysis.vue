@@ -7,7 +7,10 @@
             </div>
             <div class="chart_layout ">
                 <transition name="fade">
+                    <keep-alive>
+
                     <router-view :key="$route.name"></router-view>
+                    </keep-alive>
                 </transition>
             </div>
             

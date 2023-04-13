@@ -63,20 +63,24 @@ export default {
         };
     },
     methods: {
-        chartsResize(params) {
+        chartsResize() {
             console.log(1);
             this.$refs.s.resize();
         },
     },
-    created() {},
     mounted() {
-        console.log(this.type);
+        
+        this.chartsResize();
+    },
+    activated() {
+        this.chartsResize();
+
         window.addEventListener('resize', this.chartsResize);
     },
     beforeDestroy() {
         window.removeEventListener('resize', this.chartsResize, false);
     },
-    props:['name']
+    props: ['name'],
 };
 </script>
 <style scoped>

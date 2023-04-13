@@ -42,9 +42,9 @@ export default {
     align-items: center;
     flex-flow: wrap;
     color: rgb(118, 118, 118);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     padding: 0;
-    margin-left: 24px;
+    margin-left: 4rem;
 }
 .active {
     background: #64927c;

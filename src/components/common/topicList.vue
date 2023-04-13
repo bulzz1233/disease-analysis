@@ -45,6 +45,8 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 4rem;
+    width: 100%;
+    justify-content: center;
 }
 .title_layout {
     display: flex;
@@ -61,7 +63,9 @@ export default {
 .col{
     margin-top:2rem ;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    padding-right:6rem ;
+    margin-right:6rem ;
+
+    /* padding-right:6rem ; */
 }
 .item{
     margin-left:2rem ;
