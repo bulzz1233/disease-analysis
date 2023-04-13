@@ -33,6 +33,9 @@ export default {
         word,
     },
     mounted() {
+        console.log(this.$store.state.chunyuData.chunyuAllType);
+    },
+    created() {
         Promise.all([
             this.$store.dispatch('chunyuData/chunyuAllType'),
             this.$store.dispatch('chunyuData/chunyuConsumerMedicalType'),
