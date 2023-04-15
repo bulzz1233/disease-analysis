@@ -103,6 +103,7 @@ export default {
             this.$store.dispatch('chunyuDistributionData/allDistribution'),
             this.$store.dispatch('chunyuDistributionData/consumerDistribution'),
         ]);
+
     },
     components: {
         numCount,

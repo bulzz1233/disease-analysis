@@ -35,10 +35,10 @@
                     <span class="title_layout">疾病类型：</span>
                     <el-select class="select" v-model="vbar_choose" placeholder="请选择">
                         <el-option
-                            v-for="item in vbar_type"
+                            v-for="(item,index) in vbar_type"
                             :key="item"
                             :label="item"
-                            :value="item"
+                            :value="index"
                         ></el-option>
                     </el-select>
                 </vbar>
@@ -46,10 +46,10 @@
                     <span class="title_layout">疾病类型：</span>
                     <el-select class="select" v-model="pie_choose" placeholder="请选择">
                         <el-option
-                            v-for="item in pie_type"
+                            v-for="(item,index) in pie_type"
                             :key="item"
                             :label="item"
-                            :value="item"
+                            :value="index"
                         ></el-option>
                     </el-select>
                 </pie>
@@ -125,18 +125,23 @@ export default {
 
             ///
             pie_name: '好大夫平台-全部疾病数量TOP15评价类型数量分布',
-            pie_choose: '肺癌',
-            vbar_choose: '肺癌',
+            pie_choose: 0,
+          vbar_choose:0
         };
     },
     methods: {},
     created() {
-        Promise.all([
+
+      Promise.all([
             this.$store.dispatch('haodafuCommentData/allComment'),
             this.$store.dispatch('haodafuCommentData/consumerComment'),
         ]);
+
     },
-    computed: {
+
+  computed: {
+
+
         MedicalType() {
             return this.$store.state.constVal.MedicalType;
         },
@@ -178,7 +183,7 @@ export default {
         vbar_list() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.comment_all_v_bar_list[
-                    this.vbar_choose?this.vbar_choose:'肺癌'
+                    this.vbar_type[this.vbar_choose]
                 ];
             } else {
                 return this.$store.state.haodafuCommentData.comment_consumer_v_bar_list[
@@ -196,7 +201,7 @@ export default {
         },
         pie_list() {
             if (this.$store.state.constVal.MedicalType) {
-                return this.$store.state.haodafuCommentData.comment_pie_all_list[this.pie_choose?this.pie_choose:'肺癌'];
+                return this.$store.state.haodafuCommentData.comment_pie_all_list[this.pie_type[this.pie_choose]];
             } else {
                 return this.$store.state.haodafuCommentData.comment_pie_consumer_list[
                     this.pie_choose
@@ -205,6 +210,13 @@ export default {
         },
     },
     mounted() {
+
+      console.log(
+            'pie数据1' + this.pie_choose
+        );
+         console.log(
+            'pie数据' + this.$store.state.haodafuCommentData.comment_pie_all_list
+        );
         console.log(
             'pie数据' + this.$store.state.haodafuCommentData.comment_pie_all_list[this.pie_choose]
         );
