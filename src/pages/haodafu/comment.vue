@@ -13,9 +13,7 @@
                     <div style="height: 42px"></div>
                 </bar>
                 <s-line class="shadow" :name="line_name" :xAxis="line_Axis" :list="line_list">
-                    <span class="title_layout">
-                        年份：
-                    </span>
+                    <span class="title_layout">年份：</span>
                     <el-select class="select" v-model="line_choose" placeholder="请选择">
                         <el-option
                             v-for="item in line_options"
@@ -34,9 +32,7 @@
                     :yAxis="bar_xAxis"
                     :list="vbar_list"
                 >
-                 <span class="title_layout">
-                        疾病类型：
-                    </span>
+                    <span class="title_layout">疾病类型：</span>
                     <el-select class="select" v-model="vbar_choose" placeholder="请选择">
                         <el-option
                             v-for="item in vbar_type"
@@ -47,9 +43,7 @@
                     </el-select>
                 </vbar>
                 <pie class="shadow" :name="pie_name" :list="pie_list">
-                     <span class="title_layout">
-                        疾病类型：
-                    </span>
+                    <span class="title_layout">疾病类型：</span>
                     <el-select class="select" v-model="pie_choose" placeholder="请选择">
                         <el-option
                             v-for="item in pie_type"
@@ -127,24 +121,11 @@ export default {
                 '11月',
                 '12月',
             ],
-            line_list: [
-                {
-                    name: 'Email',
-                    type: 'line',
-                    stack: 'Total',
-                    data: [120, 132, 101, 134, 90, 230, 210, 22, 234, 343, 456, 653],
-                },
-                {
-                    name: 'Union Ads',
-                    type: 'line',
-                    stack: 'Total',
-                    data: [220, 182, 191, 234, 290, 330, 310],
-                },
-            ],
+  
             ///
             pie_name: '好大夫平台-全部疾病数量TOP15评价类型数量分布',
             pie_choose: '肺癌',
-            vbar_choose:'肺癌'
+            vbar_choose: '肺癌',
         };
     },
     methods: {},
@@ -173,20 +154,34 @@ export default {
             }
         },
         //折线图
-
+         line_list() {
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.haodafuCommentData.coomment_all_line_list[
+                    this.line_choose
+                ];
+            } else {
+                return this.$store.state.haodafuCommentData.comment_consumer_line_list[
+                    this.line_choose
+                ];
+            }
+        },
         //堆叠柱状图
         vbar_type() {
-                if (this.$store.state.constVal.MedicalType) {
+            if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.comment_all_v_bar_type;
             } else {
                 return this.$store.state.haodafuCommentData.comment_consumer_v_bar_type;
             }
         },
-          vbar_list() {
+        vbar_list() {
             if (this.$store.state.constVal.MedicalType) {
-                return this.$store.state.haodafuCommentData.comment_all_v_bar_list[this.vbar_choose];
+                return this.$store.state.haodafuCommentData.comment_all_v_bar_list[
+                    this.vbar_choose
+                ];
             } else {
-                return this.$store.state.haodafuCommentData.comment_consumer_v_bar_list[this.vbar_choose];
+                return this.$store.state.haodafuCommentData.comment_consumer_v_bar_list[
+                    this.vbar_choose
+                ];
             }
         },
         //pie图
@@ -201,14 +196,26 @@ export default {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.comment_pie_all_list[this.pie_choose];
             } else {
-                return this.$store.state.haodafuCommentData.comment_pie_consumer_list[this.pie_choose];
+                return this.$store.state.haodafuCommentData.comment_pie_consumer_list[
+                    this.pie_choose
+                ];
             }
         },
     },
+    mounted(){
+        console.log('pie数据'+this.pie_list);
+        console.log('line数据'+this.line_list);
+    },
     watch: {
-        MedicalType() {
-            this.pie_choose = '拔牙';
-            this.vbar_choose = '拔牙';
+        MedicalType(newVal, oldVal) {
+            
+            if (newVal) {
+                this.pie_choose = '肺癌';
+                this.vbar_choose = '肺癌';
+            } else {
+                this.pie_choose = '拔牙';
+                this.vbar_choose = '拔牙';
+            }
         },
     },
     components: {
@@ -279,7 +286,7 @@ export default {
     border: 1px solid #78cea5;
     box-shadow: 0 2px 12px 0 rgba(117, 117, 117, 0.1);
 }
-.title_layout{
+.title_layout {
     display: flex;
     align-items: center;
 }

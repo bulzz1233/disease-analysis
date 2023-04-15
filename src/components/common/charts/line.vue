@@ -71,6 +71,15 @@ export default {
         this.chartsResize();
 
     },
+       watch: {
+        list: {
+            deep: true,
+            handler(newVal) {
+                this.option.series= newVal;
+                this.$refs.s.setOption(this.option, true);
+            },
+        },
+    },
     activated() {
         this.chartsResize();
 

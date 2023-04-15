@@ -63,6 +63,15 @@ export default {
             this.$refs.s.resize();
         },
     },
+    watch: {
+        list: {
+            deep: true,
+            handler(newVal) {
+                this.option.series[0].data = newVal;
+                this.$refs.s.setOption(this.option, true);
+            },
+        },
+    },
     mounted() {
         this.chartsResize();
     },

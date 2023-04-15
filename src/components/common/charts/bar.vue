@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-          <div class="slot_layout">
+        <div class="slot_layout">
             <slot></slot>
         </div>
         <v-chart class="chart" :option="option" ref="s" />
@@ -67,12 +67,27 @@ export default {
     },
     methods: {
         chartsResize() {
-            console.log(1);
             this.$refs.s.resize();
         },
     },
     mounted() {
         this.chartsResize();
+    },
+    watch: {
+        yAxis: {
+            deep: true,
+            handler(newVal) {
+                this.option.yAxis.data = newVal;
+                this.$refs.s.setOption(this.option, true);
+            },
+        },
+        list: {
+            deep: true,
+            handler(newVal) {
+                this.option.series[0].data = newVal;
+                this.$refs.s.setOption(this.option, true);
+            },
+        },
     },
     activated() {
         this.chartsResize();

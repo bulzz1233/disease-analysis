@@ -44,7 +44,7 @@ export default {
                 xAxis: {
                     type: 'category',
                     boundaryGap: [0, 0.01],
-                    // data:this.xAxis
+                    data: this.xAxis,
                 },
                 //数据里的data有多少值要对应相应的坐标值个数
                 yAxis: {
@@ -63,6 +63,15 @@ export default {
     methods: {
         chartsResize(params) {
             this.$refs.a.resize();
+        },
+    },
+    watch: {
+        list: {
+            deep: true,
+            handler(newVal) {
+                this.option.series = newVal;
+                this.$refs.s.setOption(this.option, true);
+            },
         },
     },
     mounted() {

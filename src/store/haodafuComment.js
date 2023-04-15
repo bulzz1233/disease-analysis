@@ -15,6 +15,11 @@ export default {
                         'comment_all_v_bar',
                         res.data.data.data_object.disease_comment_type_nums
                     );
+                    //line
+                    context.commit(
+                        'coomment_all_line_list',
+                        res.data.data.data_object
+                    );
                     //pie
                     context.commit(
                         'comment_pie_all_list',
@@ -41,6 +46,10 @@ export default {
                         'comment_pie_consumer_list',
                         res.data.data.data_object.disease_typeDesc_nums_list
                     );
+                    context.commit(
+                        'comment_consumer_line_list',
+                        res.data.data.data_object
+                    );
                 },
                 error => {
                     alert(error.message);
@@ -52,6 +61,7 @@ export default {
         //条形图
         comment_all_h_bar(state, obj) {
             obj.forEach(element => {
+                console.log(object);
                 state.comment_all_h_bar_yAxis.push(element.disease_key);
                 state.comment_all_h_bar.push(element.disease_nums);
             });
@@ -64,66 +74,109 @@ export default {
         },
         //堆叠柱状图
         comment_all_v_bar(state, obj) {
-            
             for (let i = 0; i < obj.disease_attitude_nums_list.length; i++) {
                 let disease_key = obj.disease_attitude_nums_list[i].disease_key;
-                state.comment_all_v_bar_type.push(disease_key)
+                state.comment_all_v_bar_type.push(disease_key);
                 let attitude_data = [
                     obj.disease_attitude_nums_list[i].dissatisfaction_nums,
                     obj.disease_attitude_nums_list[i].normal_nums,
                     obj.disease_attitude_nums_list[i].quite_satisfaction_nums,
                     obj.disease_attitude_nums_list[i].satisfaction_nums,
                 ];
-                let attitude_obj = {name: '态度满意度', type: 'bar', data: attitude_data};
+                let attitude_obj = { name: '态度满意度', type: 'bar', data: attitude_data };
                 let effect_data = [
                     obj.disease_effect_nums_list[i].dissatisfaction_nums,
                     obj.disease_effect_nums_list[i].normal_nums,
                     obj.disease_effect_nums_list[i].quite_satisfaction_nums,
                     obj.disease_effect_nums_list[i].satisfaction_nums,
                 ];
-                let effect_obj = {name: '效果满意度', type: 'bar', data: effect_data};
+                let effect_obj = { name: '效果满意度', type: 'bar', data: effect_data };
                 let skill_data = [
                     obj.disease_skill_nums_list[i].dissatisfaction_nums,
                     obj.disease_skill_nums_list[i].normal_nums,
                     obj.disease_skill_nums_list[i].quite_satisfaction_nums,
                     obj.disease_skill_nums_list[i].satisfaction_nums,
                 ];
-                let skill_obj = {name: '技能满意度', type: 'bar', data: skill_data};
+                let skill_obj = { name: '技能满意度', type: 'bar', data: skill_data };
                 state.comment_all_v_bar_list[disease_key] = [effect_obj, attitude_obj, skill_obj];
             }
-
         },
-        comment_consumer_v_bar(state,obj){
+        comment_consumer_v_bar(state, obj) {
             for (let i = 0; i < obj.disease_attitude_nums_list.length; i++) {
                 let disease_key = obj.disease_attitude_nums_list[i].disease_key;
-                state.comment_consumer_v_bar_type.push(disease_key)
+                state.comment_consumer_v_bar_type.push(disease_key);
                 let attitude_data = [
                     obj.disease_attitude_nums_list[i].dissatisfaction_nums,
                     obj.disease_attitude_nums_list[i].normal_nums,
                     obj.disease_attitude_nums_list[i].quite_satisfaction_nums,
                     obj.disease_attitude_nums_list[i].satisfaction_nums,
                 ];
-                let attitude_obj = {name: '态度满意度', type: 'bar', data: attitude_data};
+                let attitude_obj = { name: '态度满意度', type: 'bar', data: attitude_data };
                 let effect_data = [
                     obj.disease_effect_nums_list[i].dissatisfaction_nums,
                     obj.disease_effect_nums_list[i].normal_nums,
                     obj.disease_effect_nums_list[i].quite_satisfaction_nums,
                     obj.disease_effect_nums_list[i].satisfaction_nums,
                 ];
-                let effect_obj = {name: '效果满意度', type: 'bar', data: effect_data};
+                let effect_obj = { name: '效果满意度', type: 'bar', data: effect_data };
                 let skill_data = [
                     obj.disease_skill_nums_list[i].dissatisfaction_nums,
                     obj.disease_skill_nums_list[i].normal_nums,
                     obj.disease_skill_nums_list[i].quite_satisfaction_nums,
                     obj.disease_skill_nums_list[i].satisfaction_nums,
                 ];
-                let skill_obj = {name: '技能满意度', type: 'bar', data: skill_data};
-                state.comment_consumer_v_bar_list[disease_key] = [effect_obj, attitude_obj, skill_obj];
+                let skill_obj = { name: '技能满意度', type: 'bar', data: skill_data };
+                state.comment_consumer_v_bar_list[disease_key] = [
+                    effect_obj,
+                    attitude_obj,
+                    skill_obj,
+                ];
             }
         },
 
         //折线图
+        coomment_all_line_list(state,obj){
+            for (let i = 0; i < obj.disease_time_nums_list.length; i++) {
+                let diseaseData = obj.disease_time_nums_list[i];
+                let diseaseName = diseaseData.disease_key;
+                let timeNumsList = diseaseData.disease_time_nums_list;
+                for (let j = 0; j < timeNumsList.length; j++) {
+                    let timeNums = timeNumsList[j];
+                    let year = timeNums.time.slice(0, 4);
+                    if (!state.coomment_all_line_list[year]) {
+                        state.coomment_all_line_list[year] = [];
+                    }
+                    let diseaseObj = state.coomment_all_line_list[year].find(d => d.name === diseaseName);
+                    if (!diseaseObj) {
+                        diseaseObj = { name: diseaseName, type: 'bar', data: [] };
+                        state.coomment_all_line_list[year].push(diseaseObj);
+                    }
+                    diseaseObj.data.push(timeNums.nums);
+                }
+            }
 
+        },
+        comment_consumer_line_list(state,obj){
+            for (let i = 0; i < obj.disease_time_nums_list.length; i++) {
+                let diseaseData = obj.disease_time_nums_list[i];
+                let diseaseName = diseaseData.disease_key;
+                let timeNumsList = diseaseData.disease_time_nums_list;
+                for (let j = 0; j < timeNumsList.length; j++) {
+                    let timeNums = timeNumsList[j];
+                    let year = timeNums.time.slice(0, 4);
+                    if (!state.comment_consumer_line_list[year]) {
+                        state.comment_consumer_line_list[year] = [];
+                    }
+                    let diseaseObj = state.comment_consumer_line_list[year].find(d => d.name === diseaseName);
+                    if (!diseaseObj) {
+                        diseaseObj = { name: diseaseName, type: 'bar', data: [] };
+                        state.comment_consumer_line_list[year].push(diseaseObj);
+                    }
+                    diseaseObj.data.push(timeNums.nums);
+                }
+            }
+
+        },
         //饼图
         comment_pie_all_list(state, obj) {
             obj.forEach(element => {
@@ -160,18 +213,22 @@ export default {
         //折线图
         coomment_all_line_list: [],
 
-        comment_consumer_line: [],
+        comment_consumer_line_list: [],
 
         //堆叠柱状图
         comment_all_v_bar_type: [],
         comment_consumer_v_bar_type: [],
-        comment_all_v_bar_list: {},
+        comment_all_v_bar_list: {
+        
+        },
+
         comment_consumer_v_bar_list: {},
 
         //饼图
         comment_pie_all_type: [],
         comment_pie_consumer_type: [],
-        comment_pie_all_list: {},
+        comment_pie_all_list: {
+        },
         comment_pie_consumer_list: {},
     },
 };
