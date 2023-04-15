@@ -122,9 +122,7 @@ export default {
         MedicalType() {
             return this.$store.state.constVal.MedicalType;
         },
-        line_options() {
-            return this.$store.state.haodafuCommentData.comment_line_option;
-        },
+
         h_bar_yAxis() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.comment_all_h_bar_yAxis;
@@ -140,6 +138,13 @@ export default {
             }
         },
         //折线图
+         line_options() {
+              if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.haodafuCommentData.comment_all_line_option;
+            } else {
+                return this.$store.state.haodafuCommentData.comment_consumer_line_option;
+            }
+        },
         line_list() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.coomment_all_line_list[
@@ -165,6 +170,7 @@ export default {
                     this.vbar_type[this.vbar_choose]
                 ];
             } else {
+              console.log(22)
                 return this.$store.state.haodafuCommentData.comment_consumer_v_bar_list[
                     this.vbar_type[this.vbar_choose]
                 ];
@@ -190,17 +196,13 @@ export default {
             }
         },
     },
-    mounted() {},
+    mounted() {
+      console.log(this.line_options)
+       console.log(this.$store.state.haodafuCommentData.coomment_all_line_list
+                )
+    },
     watch: {
-        MedicalType(newVal, oldVal) {
-            if (newVal) {
-                this.pie_choose = '肺癌';
-                this.vbar_choose = '肺癌';
-            } else {
-                this.pie_choose = '拔牙';
-                this.vbar_choose = '拔牙';
-            }
-        },
+
     },
     components: {
         numCount,
@@ -223,7 +225,7 @@ export default {
 .charts_layout {
     display: flex;
     width: 97%;
-    height: 70%;
+    height: 75%;
     margin-top: 2rem;
     justify-content: center;
     align-items: center;

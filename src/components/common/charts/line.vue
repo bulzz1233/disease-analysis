@@ -27,9 +27,7 @@ export default {
                 tooltip: {
                     trigger: 'axis',
                 },
-                legend: {
-                    // data: [],
-                },
+
                 //调整网格位置
                 grid: {
                     left: '3%',

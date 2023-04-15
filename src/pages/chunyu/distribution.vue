@@ -11,10 +11,10 @@
 
                 <el-select class="select" v-model="line_choose" placeholder="请选择">
                     <el-option
-                        v-for="item in line_options"
+                        v-for="(item,index) in line_options"
                         :key="item"
                         :label="item"
-                        :value="item"
+                        :value="index"
                     ></el-option>
                 </el-select>
             </s-line>
@@ -30,27 +30,8 @@ export default {
     name: 'distribution',
     data() {
         return {
-            line_options: [
-                '2006',
-                '2007',
-                '2008',
-                '2009',
-                '2010',
-                '2011',
-                '2012',
-                '2013',
-                '2014',
-                '2015',
-                '2016',
-                '2017',
-                '2018',
-                '2019',
-                '2020',
-                '2021',
-                '2022',
-                '2023',
-            ],
-            line_choose: '2022',
+
+            line_choose: 16,
 
             line_name: '春雨医生-全部疾病TOP10时间分布折线图',
             line_Axis: [
@@ -83,6 +64,13 @@ export default {
     methods: {},
 
     computed: {
+             line_options() {
+              if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.haodafuCommentData.comment_all_line_option;
+            } else {
+                return this.$store.state.haodafuCommentData.comment_consumer_line_option;
+            }
+        },
         h_bar_yAxis() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.chunyuDistributionData.distribution_all_bar_yAxis;
@@ -97,14 +85,14 @@ export default {
                 return this.$store.state.chunyuDistributionData.distribution_consumer_bar;
             }
         },
-           line_list() {
+ line_list() {
             if (this.$store.state.constVal.MedicalType) {
-                return this.$store.state.chunyuDistributionData.distribution_all_line_list[
-                    this.line_choose ? this.line_choose : '2022'
+                return this.$store.state.haodafuCommentData.coomment_all_line_list[
+                    this.line_options[this.line_choose]
                 ];
             } else {
-                return this.$store.state.chunyuDistributionData.distribution_consumer_line_list[
-                    this.line_choose
+                return this.$store.state.haodafuCommentData.comment_consumer_line_list[
+                    this.line_options[this.line_choose]
                 ];
             }
         },
@@ -115,6 +103,9 @@ export default {
             this.$store.dispatch('chunyuDistributionData/consumerDistribution'),
         ]);
 
+    },
+    mounted() {
+      console.log(this.$store.state.chunyuDistributionData.distribution_consumer_line_list)
     },
     components: {
         numCount,

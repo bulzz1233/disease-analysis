@@ -136,6 +136,7 @@ export default {
                     let timeNums = timeNumsList[j];
                     let year = timeNums.time.slice(0, 4);
                     if (!state.coomment_all_line_list[year]) {
+                        state.comment_all_line_option.push(year)
                         state.coomment_all_line_list[year] = [];
                     }
                     let diseaseObj = state.coomment_all_line_list[year].find(
@@ -158,6 +159,7 @@ export default {
                     let timeNums = timeNumsList[j];
                     let year = timeNums.time.slice(0, 4);
                     if (!state.comment_consumer_line_list[year]) {
+                        state.comment_consumer_line_option.push(year)
                         state.comment_consumer_line_list[year] = [];
                     }
                     let diseaseObj = state.comment_consumer_line_list[year].find(
@@ -213,28 +215,12 @@ export default {
         comment_consumer_h_bar_yAxis: [],
 
         //折线图
+        comment_consumer_line_option:[],
+                comment_all_line_option:[],
+
         coomment_all_line_list: {},
-        comment_line_option:[
-            '2006',
-            '2007',
-            '2008',
-            '2009',
-            '2010',
-            '2011',
-            '2012',
-            '2013',
-            '2014',
-            '2015',
-            '2016',
-            '2017',
-            '2018',
-            '2019',
-            '2020',
-            '2021',
-            '2022',
-            '2023',
-        ],
-        comment_consumer_line_list: [],
+
+        comment_consumer_line_list: {},
 
         //堆叠柱状图
         comment_all_v_bar_type: [],

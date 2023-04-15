@@ -18,12 +18,15 @@ export default {
             );
         },
         consumerDistribution(context) {
-            $api.chunyuDistributionAll().then(
+            $api.chunyuDistributionConsumer().then(
                 res => {
+                    console.log(res)
                     context.commit(
                         'distribution_consumer_bar',
                         res.data.data.data_object.disease_nums_list
                     );
+                    context.commit('distribution_consumer_line_list', res.data.data.data_object);
+
                 },
                 error => {
                     alert(error.message);
@@ -53,6 +56,7 @@ export default {
                     let timeNums = timeNumsList[j];
                     let year = timeNums.time.slice(0, 4);
                     if (!state.distribution_all_line_list[year]) {
+                        state.distribution_all_line_option.push(year)
                         state.distribution_all_line_list[year] = [];
                     }
                     let diseaseObj = state.distribution_all_line_list[year].find(
@@ -74,15 +78,16 @@ export default {
                 for (let j = 0; j < timeNumsList.length; j++) {
                     let timeNums = timeNumsList[j];
                     let year = timeNums.time.slice(0, 4);
-                    if (!state.distribution_all_line_list[year]) {
-                        state.distribution_all_line_list[year] = [];
+                    if (!state.distribution_consumer_line_list[year]) {
+                        state.distribution_consumer_line_option.push(year)
+                        state.distribution_consumer_line_list[year] = [];
                     }
-                    let diseaseObj = state.distribution_all_line_list[year].find(
+                    let diseaseObj = state.distribution_consumer_line_list[year].find(
                         d => d.name === diseaseName
                     );
                     if (!diseaseObj) {
                         diseaseObj = { name: diseaseName, type: 'line', stack: 'Total', data: [] };
-                        state.distribution_all_line_list[year].push(diseaseObj);
+                        state.distribution_consumer_line_list[year].push(diseaseObj);
                     }
                     diseaseObj.data.push(timeNums.nums);
                 }
@@ -91,12 +96,14 @@ export default {
     },
     state: {
         distribution_all_bar: [],
-        distribution_all_bar_yAxis: [1,2],
+        distribution_all_bar_yAxis: [],
         distribution_consumer_bar: [],
-        distribution_consumer_bar_yAxis: [3,4],
+        distribution_consumer_bar_yAxis: [],
 
         //折线图
         distribution_all_line_list: [],
+ distribution_all_line_option:[],
+         distribution_consumer_line_option:[],
 
         distribution_consumer_line_list: [],
     },
