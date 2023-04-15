@@ -35,7 +35,7 @@
                     <span class="title_layout">疾病类型：</span>
                     <el-select class="select" v-model="vbar_choose" placeholder="请选择">
                         <el-option
-                            v-for="(item,index) in vbar_type"
+                            v-for="(item, index) in vbar_type"
                             :key="item"
                             :label="item"
                             :value="index"
@@ -46,7 +46,7 @@
                     <span class="title_layout">疾病类型：</span>
                     <el-select class="select" v-model="pie_choose" placeholder="请选择">
                         <el-option
-                            v-for="(item,index) in pie_type"
+                            v-for="(item, index) in pie_type"
                             :key="item"
                             :label="item"
                             :value="index"
@@ -126,22 +126,18 @@ export default {
             ///
             pie_name: '好大夫平台-全部疾病数量TOP15评价类型数量分布',
             pie_choose: 0,
-          vbar_choose:0
+            vbar_choose: 0,
         };
     },
     methods: {},
     created() {
-
-      Promise.all([
+        Promise.all([
             this.$store.dispatch('haodafuCommentData/allComment'),
             this.$store.dispatch('haodafuCommentData/consumerComment'),
         ]);
-
     },
 
-  computed: {
-
-
+    computed: {
         MedicalType() {
             return this.$store.state.constVal.MedicalType;
         },
@@ -163,8 +159,7 @@ export default {
         line_list() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.coomment_all_line_list[
-                    this.line_choose?this.line_choose:'2022'
-
+                    this.line_choose ? this.line_choose : '2022'
                 ];
             } else {
                 return this.$store.state.haodafuCommentData.comment_consumer_line_list[
@@ -201,7 +196,9 @@ export default {
         },
         pie_list() {
             if (this.$store.state.constVal.MedicalType) {
-                return this.$store.state.haodafuCommentData.comment_pie_all_list[this.pie_type[this.pie_choose]];
+                return this.$store.state.haodafuCommentData.comment_pie_all_list[
+                    this.pie_type[this.pie_choose]
+                ];
             } else {
                 return this.$store.state.haodafuCommentData.comment_pie_consumer_list[
                     this.pie_choose
@@ -210,20 +207,7 @@ export default {
         },
     },
     mounted() {
-
-      console.log(
-            'pie数据1' + this.pie_choose
-        );
-         console.log(
-            'pie数据' + this.$store.state.haodafuCommentData.comment_pie_all_list
-        );
-        console.log(
-            'pie数据' + this.$store.state.haodafuCommentData.comment_pie_all_list[this.pie_choose]
-        );
-        console.log(
-            'line数据' +
-                this.$store.state.haodafuCommentData.coomment_all_line_list[this.line_choose]
-        );
+  
     },
     watch: {
         MedicalType(newVal, oldVal) {

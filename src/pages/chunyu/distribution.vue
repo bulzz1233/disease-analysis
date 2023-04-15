@@ -97,6 +97,17 @@ export default {
                 return this.$store.state.chunyuDistributionData.distribution_consumer_bar;
             }
         },
+           line_list() {
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.chunyuDistributionData.distribution_all_line_list[
+                    this.line_choose ? this.line_choose : '2022'
+                ];
+            } else {
+                return this.$store.state.chunyuDistributionData.distribution_consumer_line_list[
+                    this.line_choose
+                ];
+            }
+        },
     },
     created() {
         Promise.all([

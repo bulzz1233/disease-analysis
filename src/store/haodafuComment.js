@@ -213,7 +213,7 @@ export default {
         comment_consumer_h_bar_yAxis: [],
 
         //折线图
-        coomment_all_line_list: {"2022":[1,2]},
+        coomment_all_line_list: {},
 
         comment_consumer_line_list: [],
 
