@@ -70,7 +70,7 @@ export default {
             deep: true,
             handler(newVal) {
                 this.option.series = newVal;
-                this.$refs.s.setOption(this.option, true);
+                this.$refs.a.setOption(this.option, true);
             },
         },
     },

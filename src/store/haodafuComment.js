@@ -148,7 +148,7 @@ export default {
                     }
                     let diseaseObj = state.coomment_all_line_list[year].find(d => d.name === diseaseName);
                     if (!diseaseObj) {
-                        diseaseObj = { name: diseaseName, type: 'bar', data: [] };
+                        diseaseObj = { name: diseaseName, type: 'line', stack:'Total',data: [] };
                         state.coomment_all_line_list[year].push(diseaseObj);
                     }
                     diseaseObj.data.push(timeNums.nums);

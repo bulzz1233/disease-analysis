@@ -65,7 +65,7 @@ import sLine from '@/components/common/charts/line.vue';
 import pie from '@/components/common/charts/pie.vue';
 import vbar from '@/components/common/charts/v_bar.vue';
 export default {
-    name: 'distribution',
+    name: 'comment',
     data() {
         return {
             //下拉选择器
@@ -157,7 +157,8 @@ export default {
         line_list() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.coomment_all_line_list[
-                    this.line_choose
+                    this.line_choose?this.line_choose:'2006'
+
                 ];
             } else {
                 return this.$store.state.haodafuCommentData.comment_consumer_line_list[
@@ -176,7 +177,7 @@ export default {
         vbar_list() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.comment_all_v_bar_list[
-                    this.vbar_choose
+                    this.vbar_choose?this.vbar_choose:'肺癌'
                 ];
             } else {
                 return this.$store.state.haodafuCommentData.comment_consumer_v_bar_list[
@@ -194,7 +195,7 @@ export default {
         },
         pie_list() {
             if (this.$store.state.constVal.MedicalType) {
-                return this.$store.state.haodafuCommentData.comment_pie_all_list[this.pie_choose];
+                return this.$store.state.haodafuCommentData.comment_pie_all_list[this.pie_choose?this.pie_choose:'肺癌'];
             } else {
                 return this.$store.state.haodafuCommentData.comment_pie_consumer_list[
                     this.pie_choose
