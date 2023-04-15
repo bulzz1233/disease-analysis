@@ -91,9 +91,9 @@ export default {
     },
     state: {
         distribution_all_bar: [],
-        distribution_all_bar_yAxis: [],
+        distribution_all_bar_yAxis: [1,2],
         distribution_consumer_bar: [],
-        distribution_consumer_bar_yAxis: [],
+        distribution_consumer_bar_yAxis: [3,4],
 
         //折线图
         distribution_all_line_list: [],

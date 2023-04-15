@@ -16,10 +16,10 @@
                     <span class="title_layout">年份：</span>
                     <el-select class="select" v-model="line_choose" placeholder="请选择">
                         <el-option
-                            v-for="item in line_options"
+                            v-for="(item,index) in line_options"
                             :key="item"
                             :label="item"
-                            :value="item"
+                            :value="index"
                         ></el-option>
                     </el-select>
                 </s-line>
@@ -69,27 +69,8 @@ export default {
     data() {
         return {
             //下拉选择器
-            line_options: [
-                '2006',
-                '2007',
-                '2008',
-                '2009',
-                '2010',
-                '2011',
-                '2012',
-                '2013',
-                '2014',
-                '2015',
-                '2016',
-                '2017',
-                '2018',
-                '2019',
-                '2020',
-                '2021',
-                '2022',
-                '2023',
-            ],
-            line_choose: '2022',
+
+            line_choose: 16,
             //num_list
             list: [
                 { name: '疾病类型数', num: 11, style: '#007aff' },
@@ -141,6 +122,9 @@ export default {
         MedicalType() {
             return this.$store.state.constVal.MedicalType;
         },
+        line_options() {
+            return this.$store.state.haodafuCommentData.comment_line_option;
+        },
         h_bar_yAxis() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.comment_all_h_bar_yAxis;
@@ -159,11 +143,11 @@ export default {
         line_list() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.coomment_all_line_list[
-                    this.line_choose ? this.line_choose : '2022'
+                    this.line_options[this.line_choose]
                 ];
             } else {
                 return this.$store.state.haodafuCommentData.comment_consumer_line_list[
-                    this.line_choose
+                    this.line_options[this.line_choose]
                 ];
             }
         },
@@ -182,7 +166,7 @@ export default {
                 ];
             } else {
                 return this.$store.state.haodafuCommentData.comment_consumer_v_bar_list[
-                    this.vbar_choose
+                    this.vbar_type[this.vbar_choose]
                 ];
             }
         },
@@ -201,14 +185,12 @@ export default {
                 ];
             } else {
                 return this.$store.state.haodafuCommentData.comment_pie_consumer_list[
-                    this.pie_choose
+                    this.pie_type[this.pie_choose]
                 ];
             }
         },
     },
-    mounted() {
-  
-    },
+    mounted() {},
     watch: {
         MedicalType(newVal, oldVal) {
             if (newVal) {
