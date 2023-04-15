@@ -7,26 +7,58 @@
                     class="shadow"
                     :name="bar_name"
                     :xAxis="bar_xAxis"
-                    :yAxis="bar_yAxis"
-                    :list="bar_list"
-                />
-                <s-line
-                    class="shadow"
-                    :name="line_name"
-                    :xAxis="line_Axis"
-                    :list="line_list"
-                    ref="s"
-                />
+                    :yAxis="h_bar_yAxis"
+                    :list="h_bar_list"
+                >
+                    <div style="height: 42px"></div>
+                </bar>
+                <s-line class="shadow" :name="line_name" :xAxis="line_Axis" :list="line_list">
+                    <span class="title_layout">
+                        年份：
+                    </span>
+                    <el-select class="select" v-model="line_choose" placeholder="请选择">
+                        <el-option
+                            v-for="item in line_options"
+                            :key="item"
+                            :label="item"
+                            :value="item"
+                        ></el-option>
+                    </el-select>
+                </s-line>
             </div>
             <div class="charts_layout1">
                 <vbar
                     class="shadow"
                     :name="bar_name"
-                    :xAxis="bar_xAxis"
-                    :yAxis="bar_yAxis"
-                    :list="bar_list"
-                />
-                <pie class="shadow" :name="pie_name" :list="pie_list" />
+                    :xAxis="v_bar_xAxis"
+                    :yAxis="bar_xAxis"
+                    :list="vbar_list"
+                >
+                 <span class="title_layout">
+                        疾病类型：
+                    </span>
+                    <el-select class="select" v-model="vbar_choose" placeholder="请选择">
+                        <el-option
+                            v-for="item in vbar_type"
+                            :key="item"
+                            :label="item"
+                            :value="item"
+                        ></el-option>
+                    </el-select>
+                </vbar>
+                <pie class="shadow" :name="pie_name" :list="pie_list">
+                     <span class="title_layout">
+                        疾病类型：
+                    </span>
+                    <el-select class="select" v-model="pie_choose" placeholder="请选择">
+                        <el-option
+                            v-for="item in pie_type"
+                            :key="item"
+                            :label="item"
+                            :value="item"
+                        ></el-option>
+                    </el-select>
+                </pie>
             </div>
         </div>
     </div>
@@ -42,6 +74,29 @@ export default {
     name: 'distribution',
     data() {
         return {
+            //下拉选择器
+            line_options: [
+                '2006',
+                '2007',
+                '2008',
+                '2009',
+                '2010',
+                '2011',
+                '2012',
+                '2013',
+                '2014',
+                '2015',
+                '2016',
+                '2017',
+                '2018',
+                '2019',
+                '2020',
+                '2021',
+                '2022',
+                '2023',
+            ],
+            line_choose: '2006',
+            //num_list
             list: [
                 { name: '疾病类型数', num: 11, style: '#007aff' },
                 { name: '最多评价疾病数', num: 14, style: '#ff3a30' },
@@ -49,30 +104,111 @@ export default {
                 { name: '最多评价分布数', num: 16, style: '#34c758' },
             ],
             /////////////
-            bar_name: '春雨医生-全部疾病数量TOP10',
+            bar_name: '好大夫-全部疾病数量TOP15价类型数量分布',
             bar_xAxis: [],
-            bar_yAxis: ['ss', 'dd', 'vv', 'ff'],
-            bar_list: [
+
+            //堆叠柱状图
+
+            v_bar_xAxis: ['不满意', '一般', '满意', '很满意'],
+
+            ////折线图
+            line_name: '好大夫-全部疾病TOP15时间分布折线图',
+            line_Axis: [
+                '1月',
+                '2月',
+                '3月',
+                '4月',
+                '5月',
+                '6月',
+                '7月',
+                '8月',
+                '9月',
+                '10月',
+                '11月',
+                '12月',
+            ],
+            line_list: [
                 {
-                    name: '2011',
-                    type: 'bar',
-                    data: [18203, 23489, 29034, 104970, 131744, 630230],
+                    name: 'Email',
+                    type: 'line',
+                    stack: 'Total',
+                    data: [120, 132, 101, 134, 90, 230, 210, 22, 234, 343, 456, 653],
+                },
+                {
+                    name: 'Union Ads',
+                    type: 'line',
+                    stack: 'Total',
+                    data: [220, 182, 191, 234, 290, 330, 310],
                 },
             ],
-            ////
-            line_name: '春雨医生-全部疾病TOP10时间分布折线图',
-            line_Axis: ['mon', 'tue', 'wed'],
             ///
-            pie_name: '好大夫平台-全部疾病数量TOP10评价类型数量分布',
+            pie_name: '好大夫平台-全部疾病数量TOP15评价类型数量分布',
+            pie_choose: '肺癌',
+            vbar_choose:'肺癌'
         };
     },
     methods: {},
+    created() {
+        Promise.all([
+            this.$store.dispatch('haodafuCommentData/allComment'),
+            this.$store.dispatch('haodafuCommentData/consumerComment'),
+        ]);
+    },
     computed: {
-        line_list() {
-            return this.$store.state.haodafuData.comment_line_list;
+        MedicalType() {
+            return this.$store.state.constVal.MedicalType;
+        },
+        h_bar_yAxis() {
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.haodafuCommentData.comment_all_h_bar_yAxis;
+            } else {
+                return this.$store.state.haodafuCommentData.comment_consumer_h_bar_yAxis;
+            }
+        },
+        h_bar_list() {
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.haodafuCommentData.comment_all_h_bar;
+            } else {
+                return this.$store.state.haodafuCommentData.comment_consumer_h_bar;
+            }
+        },
+        //折线图
+
+        //堆叠柱状图
+        vbar_type() {
+                if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.haodafuCommentData.comment_all_v_bar_type;
+            } else {
+                return this.$store.state.haodafuCommentData.comment_consumer_v_bar_type;
+            }
+        },
+          vbar_list() {
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.haodafuCommentData.comment_all_v_bar_list[this.vbar_choose];
+            } else {
+                return this.$store.state.haodafuCommentData.comment_consumer_v_bar_list[this.vbar_choose];
+            }
+        },
+        //pie图
+        pie_type() {
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.haodafuCommentData.comment_pie_all_type;
+            } else {
+                return this.$store.state.haodafuCommentData.comment_pie_consumer_type;
+            }
         },
         pie_list() {
-            return this.$store.state.haodafuData.comment_pie_list;
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.haodafuCommentData.comment_pie_all_list[this.pie_choose];
+            } else {
+                return this.$store.state.haodafuCommentData.comment_pie_consumer_list[this.pie_choose];
+            }
+        },
+    },
+    watch: {
+        MedicalType() {
+            this.pie_choose = '拔牙';
+            this.vbar_choose = '拔牙';
         },
     },
     components: {
@@ -96,7 +232,7 @@ export default {
 .charts_layout {
     display: flex;
     width: 97%;
-    height: 50%;
+    height: 70%;
     margin-top: 2rem;
     justify-content: center;
     align-items: center;
@@ -106,23 +242,22 @@ export default {
 }
 .charts_layout1 {
     display: flex;
-    height: 35%;
+    height: 55%;
 
     width: 97%;
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
-    margin-bottom: 7rem;
+    margin-bottom: 1rem;
     margin-left: 1rem;
 }
-.chart{
+.chart {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 80%;
     width: 99%;
-
 }
 
 .num {
@@ -135,5 +270,17 @@ export default {
 .shadow {
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     margin-right: 2rem;
+}
+.select {
+    position: relative;
+    width: 10rem;
+    right: 0;
+    border-radius: 5px;
+    border: 1px solid #78cea5;
+    box-shadow: 0 2px 12px 0 rgba(117, 117, 117, 0.1);
+}
+.title_layout{
+    display: flex;
+    align-items: center;
 }
 </style>

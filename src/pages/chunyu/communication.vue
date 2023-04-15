@@ -85,7 +85,6 @@ export default {
         wave,
     },
     mounted() {
-        console.log(11);
     },
 };
 </script>

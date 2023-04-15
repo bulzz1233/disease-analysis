@@ -1,5 +1,8 @@
 <template>
     <div class="layout">
+        <div class="slot_layout">
+            <slot></slot>
+        </div>
         <v-chart class="chart" ref="s" :option="option" />
     </div>
 </template>
@@ -60,9 +63,8 @@ export default {
             this.$refs.s.resize();
         },
     },
-    mounted(){
+    mounted() {
         this.chartsResize();
-
     },
     activated() {
         this.chartsResize();
@@ -77,7 +79,6 @@ export default {
 </script>
 <style scoped>
 .layout {
-    padding-top: 3rem;
     padding-left: 3rem;
 
     width: 100%;
@@ -86,5 +87,10 @@ export default {
 .chart {
     width: 100%;
     height: 100%;
+}
+.slot_layout {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 }
 </style>
