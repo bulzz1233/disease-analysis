@@ -61,7 +61,7 @@ export default {
         //条形图
         comment_all_h_bar(state, obj) {
             obj.forEach(element => {
-                console.log(object);
+                console.log(obj);
                 state.comment_all_h_bar_yAxis.push(element.disease_key);
                 state.comment_all_h_bar.push(element.disease_nums);
             });

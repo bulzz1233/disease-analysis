@@ -121,7 +121,7 @@ export default {
                 '11月',
                 '12月',
             ],
-  
+
             ///
             pie_name: '好大夫平台-全部疾病数量TOP15评价类型数量分布',
             pie_choose: '肺癌',
@@ -154,7 +154,7 @@ export default {
             }
         },
         //折线图
-         line_list() {
+        line_list() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.coomment_all_line_list[
                     this.line_choose
@@ -202,13 +202,17 @@ export default {
             }
         },
     },
-    mounted(){
-        console.log('pie数据'+this.pie_list);
-        console.log('line数据'+this.line_list);
+    mounted() {
+        console.log(
+            'pie数据' + this.$store.state.haodafuCommentData.comment_pie_all_list[this.pie_choose]
+        );
+        console.log(
+            'line数据' +
+                this.$store.state.haodafuCommentData.coomment_all_line_list[this.line_choose]
+        );
     },
     watch: {
         MedicalType(newVal, oldVal) {
-            
             if (newVal) {
                 this.pie_choose = '肺癌';
                 this.vbar_choose = '肺癌';

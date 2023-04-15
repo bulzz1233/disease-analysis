@@ -64,7 +64,6 @@ export default {
     },
     methods: {
         chartsResize() {
-            console.log(1);
             this.$refs.s.resize();
         },
     },
