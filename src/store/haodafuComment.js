@@ -65,28 +65,28 @@ export default {
         //堆叠柱状图
         comment_all_v_bar(state, obj) {
             
-            for (let i = 0; i < obj.disease_comment_type_nums.disease_attitude_nums_list.length; i++) {
-                let disease_key = obj.disease_comment_type_nums.disease_attitude_nums_list[i].disease_key;
+            for (let i = 0; i < obj.disease_attitude_nums_list.length; i++) {
+                let disease_key = obj.disease_attitude_nums_list[i].disease_key;
                 state.comment_all_v_bar_type.push(disease_key)
                 let attitude_data = [
-                    obj.disease_comment_type_nums.disease_attitude_nums_list[i].dissatisfaction_nums,
-                    obj.disease_comment_type_nums.disease_attitude_nums_list[i].normal_nums,
-                    obj.disease_comment_type_nums.disease_attitude_nums_list[i].quite_satisfaction_nums,
-                    obj.disease_comment_type_nums.disease_attitude_nums_list[i].satisfaction_nums,
+                    obj.disease_attitude_nums_list[i].dissatisfaction_nums,
+                    obj.disease_attitude_nums_list[i].normal_nums,
+                    obj.disease_attitude_nums_list[i].quite_satisfaction_nums,
+                    obj.disease_attitude_nums_list[i].satisfaction_nums,
                 ];
                 let attitude_obj = {name: '态度满意度', type: 'bar', data: attitude_data};
                 let effect_data = [
-                    obj.disease_comment_type_nums.disease_effect_nums_list[i].dissatisfaction_nums,
-                    obj.disease_comment_type_nums.disease_effect_nums_list[i].normal_nums,
-                    obj.disease_comment_type_nums.disease_effect_nums_list[i].quite_satisfaction_nums,
-                    obj.disease_comment_type_nums.disease_effect_nums_list[i].satisfaction_nums,
+                    obj.disease_effect_nums_list[i].dissatisfaction_nums,
+                    obj.disease_effect_nums_list[i].normal_nums,
+                    obj.disease_effect_nums_list[i].quite_satisfaction_nums,
+                    obj.disease_effect_nums_list[i].satisfaction_nums,
                 ];
                 let effect_obj = {name: '效果满意度', type: 'bar', data: effect_data};
                 let skill_data = [
-                    obj.disease_comment_type_nums.disease_skill_nums_list[i].dissatisfaction_nums,
-                    obj.disease_comment_type_nums.disease_skill_nums_list[i].normal_nums,
-                    obj.disease_comment_type_nums.disease_skill_nums_list[i].quite_satisfaction_nums,
-                    obj.disease_comment_type_nums.disease_skill_nums_list[i].satisfaction_nums,
+                    obj.disease_skill_nums_list[i].dissatisfaction_nums,
+                    obj.disease_skill_nums_list[i].normal_nums,
+                    obj.disease_skill_nums_list[i].quite_satisfaction_nums,
+                    obj.disease_skill_nums_list[i].satisfaction_nums,
                 ];
                 let skill_obj = {name: '技能满意度', type: 'bar', data: skill_data};
                 state.comment_all_v_bar_list[disease_key] = [effect_obj, attitude_obj, skill_obj];
@@ -94,28 +94,28 @@ export default {
 
         },
         comment_consumer_v_bar(state,obj){
-            for (let i = 0; i < obj.disease_comment_type_nums.disease_attitude_nums_list.length; i++) {
-                let disease_key = obj.disease_comment_type_nums.disease_attitude_nums_list[i].disease_key;
+            for (let i = 0; i < obj.disease_attitude_nums_list.length; i++) {
+                let disease_key = obj.disease_attitude_nums_list[i].disease_key;
                 state.comment_consumer_v_bar_type.push(disease_key)
                 let attitude_data = [
-                    obj.disease_comment_type_nums.disease_attitude_nums_list[i].dissatisfaction_nums,
-                    obj.disease_comment_type_nums.disease_attitude_nums_list[i].normal_nums,
-                    obj.disease_comment_type_nums.disease_attitude_nums_list[i].quite_satisfaction_nums,
-                    obj.disease_comment_type_nums.disease_attitude_nums_list[i].satisfaction_nums,
+                    obj.disease_attitude_nums_list[i].dissatisfaction_nums,
+                    obj.disease_attitude_nums_list[i].normal_nums,
+                    obj.disease_attitude_nums_list[i].quite_satisfaction_nums,
+                    obj.disease_attitude_nums_list[i].satisfaction_nums,
                 ];
                 let attitude_obj = {name: '态度满意度', type: 'bar', data: attitude_data};
                 let effect_data = [
-                    obj.disease_comment_type_nums.disease_effect_nums_list[i].dissatisfaction_nums,
-                    obj.disease_comment_type_nums.disease_effect_nums_list[i].normal_nums,
-                    obj.disease_comment_type_nums.disease_effect_nums_list[i].quite_satisfaction_nums,
-                    obj.disease_comment_type_nums.disease_effect_nums_list[i].satisfaction_nums,
+                    obj.disease_effect_nums_list[i].dissatisfaction_nums,
+                    obj.disease_effect_nums_list[i].normal_nums,
+                    obj.disease_effect_nums_list[i].quite_satisfaction_nums,
+                    obj.disease_effect_nums_list[i].satisfaction_nums,
                 ];
                 let effect_obj = {name: '效果满意度', type: 'bar', data: effect_data};
                 let skill_data = [
-                    obj.disease_comment_type_nums.disease_skill_nums_list[i].dissatisfaction_nums,
-                    obj.disease_comment_type_nums.disease_skill_nums_list[i].normal_nums,
-                    obj.disease_comment_type_nums.disease_skill_nums_list[i].quite_satisfaction_nums,
-                    obj.disease_comment_type_nums.disease_skill_nums_list[i].satisfaction_nums,
+                    obj.disease_skill_nums_list[i].dissatisfaction_nums,
+                    obj.disease_skill_nums_list[i].normal_nums,
+                    obj.disease_skill_nums_list[i].quite_satisfaction_nums,
+                    obj.disease_skill_nums_list[i].satisfaction_nums,
                 ];
                 let skill_obj = {name: '技能满意度', type: 'bar', data: skill_data};
                 state.comment_consumer_v_bar_list[disease_key] = [effect_obj, attitude_obj, skill_obj];
