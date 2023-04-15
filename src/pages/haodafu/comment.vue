@@ -5,7 +5,7 @@
             <div class="charts_layout">
                 <bar
                     class="shadow"
-                    :name="bar_name"
+                    :name="h_bar_name"
                     :xAxis="bar_xAxis"
                     :yAxis="h_bar_yAxis"
                     :list="h_bar_list"
@@ -98,7 +98,8 @@ export default {
                 { name: '最多评价分布数', num: 16, style: '#34c758' },
             ],
             /////////////
-            bar_name: '好大夫-全部疾病数量TOP15价类型数量分布',
+            bar_name: '好大夫-全部疾病数量TOP15评价类型数量分布',
+            h_bar_name: '好大夫-全部疾病数量TOP15',
             bar_xAxis: [],
 
             //堆叠柱状图

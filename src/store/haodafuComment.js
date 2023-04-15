@@ -55,7 +55,6 @@ export default {
         //条形图
         comment_all_h_bar(state, obj) {
             obj.forEach(element => {
-                console.log(obj);
                 state.comment_all_h_bar_yAxis.push(element.disease_key);
                 state.comment_all_h_bar.push(element.disease_nums);
             });
@@ -214,7 +213,7 @@ export default {
         comment_consumer_h_bar_yAxis: [],
 
         //折线图
-        coomment_all_line_list: [],
+        coomment_all_line_list: {"2022":[1,2]},
 
         comment_consumer_line_list: [],
 
