@@ -89,7 +89,7 @@ export default {
                 '2022',
                 '2023',
             ],
-            line_choose: '2006',
+            line_choose: '2022',
             //num_list
             list: [
                 { name: '疾病类型数', num: 11, style: '#007aff' },
@@ -157,7 +157,7 @@ export default {
         line_list() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.coomment_all_line_list[
-                    this.line_choose?this.line_choose:'2006'
+                    this.line_choose?this.line_choose:'2022'
 
                 ];
             } else {

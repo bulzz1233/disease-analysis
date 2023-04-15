@@ -16,10 +16,7 @@ export default {
                         res.data.data.data_object.disease_comment_type_nums
                     );
                     //line
-                    context.commit(
-                        'coomment_all_line_list',
-                        res.data.data.data_object
-                    );
+                    context.commit('coomment_all_line_list', res.data.data.data_object);
                     //pie
                     context.commit(
                         'comment_pie_all_list',
@@ -46,10 +43,7 @@ export default {
                         'comment_pie_consumer_list',
                         res.data.data.data_object.disease_typeDesc_nums_list
                     );
-                    context.commit(
-                        'comment_consumer_line_list',
-                        res.data.data.data_object
-                    );
+                    context.commit('comment_consumer_line_list', res.data.data.data_object);
                 },
                 error => {
                     alert(error.message);
@@ -126,16 +120,15 @@ export default {
                     obj.disease_skill_nums_list[i].satisfaction_nums,
                 ];
                 let skill_obj = { name: '技能满意度', type: 'bar', data: skill_data };
-                state.comment_consumer_v_bar_list[disease_key] = [
-                    effect_obj,
-                    attitude_obj,
-                    skill_obj,
-                ];
+                state.comment_consumer_v_bar_list[disease_key] = [];
+                state.comment_consumer_v_bar_list[disease_key].push(effect_obj);
+                state.comment_consumer_v_bar_list[disease_key].push(attitude_obj);
+                state.comment_consumer_v_bar_list[disease_key].push(skill_obj);
             }
         },
 
         //折线图
-        coomment_all_line_list(state,obj){
+        coomment_all_line_list(state, obj) {
             for (let i = 0; i < obj.disease_time_nums_list.length; i++) {
                 let diseaseData = obj.disease_time_nums_list[i];
                 let diseaseName = diseaseData.disease_key;
@@ -146,17 +139,18 @@ export default {
                     if (!state.coomment_all_line_list[year]) {
                         state.coomment_all_line_list[year] = [];
                     }
-                    let diseaseObj = state.coomment_all_line_list[year].find(d => d.name === diseaseName);
+                    let diseaseObj = state.coomment_all_line_list[year].find(
+                        d => d.name === diseaseName
+                    );
                     if (!diseaseObj) {
-                        diseaseObj = { name: diseaseName, type: 'line', stack:'Total',data: [] };
+                        diseaseObj = { name: diseaseName, type: 'line', stack: 'Total', data: [] };
                         state.coomment_all_line_list[year].push(diseaseObj);
                     }
                     diseaseObj.data.push(timeNums.nums);
                 }
             }
-
         },
-        comment_consumer_line_list(state,obj){
+        comment_consumer_line_list(state, obj) {
             for (let i = 0; i < obj.disease_time_nums_list.length; i++) {
                 let diseaseData = obj.disease_time_nums_list[i];
                 let diseaseName = diseaseData.disease_key;
@@ -167,25 +161,34 @@ export default {
                     if (!state.comment_consumer_line_list[year]) {
                         state.comment_consumer_line_list[year] = [];
                     }
-                    let diseaseObj = state.comment_consumer_line_list[year].find(d => d.name === diseaseName);
+                    let diseaseObj = state.comment_consumer_line_list[year].find(
+                        d => d.name === diseaseName
+                    );
                     if (!diseaseObj) {
-                        diseaseObj = { name: diseaseName, type: 'bar', data: [] };
+                        diseaseObj = { name: diseaseName, type: 'line', stack: 'Total', data: [] };
                         state.comment_consumer_line_list[year].push(diseaseObj);
                     }
                     diseaseObj.data.push(timeNums.nums);
                 }
             }
-
         },
         //饼图
         comment_pie_all_list(state, obj) {
             obj.forEach(element => {
                 state.comment_pie_all_type.push(element.disease_key);
-                state.comment_pie_all_list[element.disease_key] = [
-                    { name: '感谢信', value: element.thanks_nums },
-                    { name: '看病经验', value: element.experience_nums },
-                    { name: '医生投票', value: element.vote_nums },
-                ];
+                state.comment_pie_all_list[element.disease_key] = [];
+                state.comment_pie_all_list[element.disease_key].push({
+                    name: '感谢信',
+                    value: element.thanks_nums,
+                });
+                state.comment_pie_all_list[element.disease_key].push({
+                    name: '看病经验',
+                    value: element.experience_nums,
+                });
+                state.comment_pie_all_list[element.disease_key].push({
+                    name: '医生投票',
+                    value: element.vote_nums,
+                });
             });
         },
         comment_pie_consumer_list(state, obj) {
@@ -218,17 +221,14 @@ export default {
         //堆叠柱状图
         comment_all_v_bar_type: [],
         comment_consumer_v_bar_type: [],
-        comment_all_v_bar_list: {
-        
-        },
+        comment_all_v_bar_list: {},
 
         comment_consumer_v_bar_list: {},
 
         //饼图
         comment_pie_all_type: [],
         comment_pie_consumer_type: [],
-        comment_pie_all_list: {
-        },
+        comment_pie_all_list: {},
         comment_pie_consumer_list: {},
     },
 };
