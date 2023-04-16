@@ -2,7 +2,10 @@
     <div class="layout">
         <search />
         <u-tag :list="tag_list_data" />
-        <scatter-chart />
+        <scatter-chart 
+        :list='scatter_list'
+        :Axis='scatter_type'
+        />
         <word :list="word_list"/>
     </div>
 </template>
@@ -25,6 +28,21 @@ export default {
                 return this.$store.state.chunyuData.chunyuAllType;
             } else {
                 return this.$store.state.chunyuData.chunyuConsumerMedicalType;
+            }
+        },
+        scatter_type() {
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.chunyuWordData.word_all_scatter_type;
+            } else {
+                return this.$store.state.chunyuWordData.word_consumer_scatter_type;
+            }
+        },
+        scatter_list(){
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.chunyuWordData.word_all_scatter_list
+            } else {
+                return this.$store.state.chunyuWordData.word_consumer_scatter_list
+                
             }
         },
         word_list(){

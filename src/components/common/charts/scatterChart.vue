@@ -18,13 +18,13 @@ export default {
         return {
             option: {
                 title: {
-                    text: 'x疾病-高频词%TOP30',
+                    text: 'x疾病-高频词TOP30',
                     // subtext: 'Fake Data',
                 },
                 xAxis: {
-                    xAxis: {
-                        data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-                    },
+                    
+                        data: this.Axis,
+                    
                 },
                 tooltip: {
                     trigger: 'item',
@@ -38,26 +38,9 @@ export default {
                 yAxis: {},
                 series: [
                     {
-                        name: '数据源1',
-                        symbolSize: 20,
-                        data: [
-                            [10, 10],
-                            [220, 24],
-                            [191, 234],
-                            [290, 330],
-                        ],
                         type: 'scatter',
-                    },
-                    {
-                        name: '数据源2',
-                        symbolSize: 20,
-                        type: 'scatter',
-                        data: [
-                            [40, 40],
-                            [120, 239],
-                            [294, 50],
-                            [144, 230],
-                        ],
+                        color:'#91cc75',
+                        data: this.list,
                     },
                 ],
             },
@@ -68,9 +51,24 @@ export default {
             this.$refs.s.resize();
         },
     },
-     mounted(){
+        watch: {
+        Axis: {
+            deep: true,
+            handler(newVal) {
+                this.option.xAxis.data = newVal;
+                this.$refs.s.setOption(this.option, true);
+            },
+        },
+        list: {
+            deep: true,
+            handler(newVal) {
+                this.option.series[0].data = newVal;
+                this.$refs.s.setOption(this.option, true);
+            },
+        },
+    },
+    mounted() {
         this.chartsResize();
-
     },
     activated() {
         this.chartsResize();
@@ -81,7 +79,7 @@ export default {
         window.removeEventListener('resize', this.chartsResize, false);
     },
 
-    props: ['name', 'xAxis', 'list'],
+    props: [ 'Axis', 'list'],
 };
 </script>
 <style scoped>
