@@ -35,7 +35,7 @@ export default {
                 // 热力地图
                 visualMap: {
                     min: 0,
-                    max: 10,
+                    max: this.list[0].value,
                     calculable: true,
                     orient: 'vertical',
                     left: '1%',
