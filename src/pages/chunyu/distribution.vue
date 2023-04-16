@@ -5,7 +5,6 @@
             <bar :name="bar_name" :xAxis="bar_xAxis" :yAxis="h_bar_yAxis" :list="h_bar_list">
                 <div style="height: 42px"></div>
             </bar>
-            <div class="line"></div>
             <s-line :name="line_name" :xAxis="line_Axis" :list="line_list">
                 <span class="title_layout">年份：</span>
 
@@ -66,9 +65,9 @@ export default {
     computed: {
              line_options() {
               if (this.$store.state.constVal.MedicalType) {
-                return this.$store.state.haodafuCommentData.comment_all_line_option;
+                return this.$store.state.chunyuDistributionData.distribution_all_line_option;
             } else {
-                return this.$store.state.haodafuCommentData.comment_consumer_line_option;
+                return this.$store.state.chunyuDistributionData.distribution_consumer_line_option;
             }
         },
         h_bar_yAxis() {
@@ -87,11 +86,11 @@ export default {
         },
  line_list() {
             if (this.$store.state.constVal.MedicalType) {
-                return this.$store.state.haodafuCommentData.coomment_all_line_list[
+                return this.$store.state.chunyuDistributionData.distribution_all_line_list[
                     this.line_options[this.line_choose]
                 ];
             } else {
-                return this.$store.state.haodafuCommentData.comment_consumer_line_list[
+                return this.$store.state.chunyuDistributionData.distribution_consumer_line_list[
                     this.line_options[this.line_choose]
                 ];
             }
@@ -102,7 +101,7 @@ export default {
             this.$store.dispatch('chunyuDistributionData/allDistribution'),
             this.$store.dispatch('chunyuDistributionData/consumerDistribution'),
         ]);
-
+    this.line_choose = 0
     },
     mounted() {
       console.log(this.$store.state.chunyuDistributionData.distribution_consumer_line_list)
@@ -127,6 +126,7 @@ export default {
     display: flex;
     width: 98%;
     height: 100%;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
@@ -142,7 +142,7 @@ export default {
 .select {
     position: relative;
     width: 10rem;
-    right: 0;
+    right: 5rem;
     border-radius: 5px;
     border: 1px solid #78cea5;
     box-shadow: 0 2px 12px 0 rgba(117, 117, 117, 0.1);

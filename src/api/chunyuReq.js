@@ -25,3 +25,15 @@ export function chunyuDistributionConsumer() {
         url:'/chunyu/distribute/consumer_medical'
     })
 }
+export function chunyuWordAll() {
+    return request({
+        method:'GET',
+        url:'/chunyu/wordcloud/all'
+    })
+} 
+export function chunyuWordConsumer() {
+    return request({
+        method:'GET',
+        url:'/chunyu/wordcloud/consumer_medical'
+    })
+} 
