@@ -16,7 +16,9 @@ import search from '@/components/common/search.vue';
 import uTag from '@/components/common/uTag.vue';
 export default {
     data() {
-        return {};
+        return {
+            
+        };
     },
     methods: {},
     computed: {
@@ -36,13 +38,13 @@ export default {
         },
         t_data() {
             if (this.$store.state.constVal.MedicalType) {
-                if (his.$store.state.constVal.city_province) {
+                if (this.$store.state.constVal.city_province) {
                     return this.$store.state.haodafuPatientData.haodafuAllPatientProvinceTable;
                 } else {
                     return this.$store.state.haodafuPatientData.haodafuAllPatientCityTable;
                 }
             } else {
-                if (his.$store.state.constVal.city_province) {
+                if (this.$store.state.constVal.city_province) {
                     return this.$store.state.haodafuPatientData.haodafuConsumerPatientProvinceTable;
                 } else {
                     return this.$store.state.haodafuPatientData.haodafuConsumerPatientCityTable;

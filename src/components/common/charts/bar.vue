@@ -71,6 +71,7 @@ export default {
         },
     },
     mounted() {
+        console.log(this.option);
         this.chartsResize();
     },
     watch: {

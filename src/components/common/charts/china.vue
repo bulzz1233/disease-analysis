@@ -1,27 +1,23 @@
 <template>
     <div class="layout">
-        <v-chart class="chart" :option="option" ref="s" />
+        <v-chart class="chart" :option="option" ref="mychart" />
     </div>
 </template>
 
 <script>
 import '@/assets/charts/china.js';
-import VChart, { THEME_KEY } from 'vue-echarts';
+import VChart from 'vue-echarts';
 
 export default {
     name: 'china',
     components: {
         VChart,
     },
-    provide: {
-        [THEME_KEY]: 'light ',
-    },
     data() {
         return {
             option: {
                 title: {
                     text: '好大夫-评价患者分布地区分析',
-
                     textStyle: {
                         fontSize: 25,
                     },
@@ -40,7 +36,7 @@ export default {
                     orient: 'vertical',
                     left: '1%',
                     bottom: '1%',
-                    color:['#45c170','#e6e6e6']
+                    color: ['#45c170', '#e6e6e6'],
                 },
                 series: [
                     {
@@ -82,7 +78,19 @@ export default {
             },
         };
     },
-
+    mounted() {
+        this.$nextTick(() => {
+            console.log(this.option);
+        });
+    },
+    watch: {
+        list: {
+            deep: true,
+            handler(newVal) {
+                this.option.series[0].data = newVal;
+            },
+        },
+    },
     props: ['list'],
 };
 </script>
