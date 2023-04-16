@@ -8,9 +8,14 @@ export default {
     mutations: {
         changeTpye(state,obj){
             state.MedicalType=!state.MedicalType
+        },
+        changeArea(state,obj){
+            state.city_province=!state.city_province
+
         }
     },
     state: {
-        MedicalType:true
+        MedicalType:true,
+        city_province:true
     },
 };

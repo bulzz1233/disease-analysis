@@ -10,21 +10,21 @@
                 width="100"
             ></el-table-column>
             <el-table-column
-                prop="date"
+                prop="area"
                 label="地区"
                 header-align="center"
                 align="center"
                 width="100"
             ></el-table-column>
             <el-table-column
-                prop="name"
+                prop="nums"
                 label="数量"
                 header-align="center"
                 align="center"
                 width="100"
             ></el-table-column>
             <el-table-column
-                prop="address"
+                prop="percent"
                 label="占比"
                 header-align="center"
                 align="center"

@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <el-radio-group v-model="radio">
+    <div class="layout">
+        <el-radio-group @change="changeArea()" v-model="radio">
             <el-radio-button label="省份"></el-radio-button>
             <el-radio-button label="城市"></el-radio-button>
         </el-radio-group>
@@ -15,8 +15,16 @@ export default {
             radio:'省份'
         };
     },
-    methods: {},
+    methods: {
+            changeArea(){
+            //commit直接访问mutation
+            this.$store.commit('constVal/changeArea');
+            console.log(this.$store.state.constVal.city_province);
+        }
+    },
     created() {},
 };
 </script>
-<style scoped></style>
+<style scoped>
+
+</style>

@@ -38,8 +38,8 @@ export default {
     },
     state: {
         //春雨类型
-        chunyuAllType:["全部"],
-        chunyuConsumerMedicalType:["全部"],
+        chunyuAllType:["全部类型"],
+        chunyuConsumerMedicalType:["全部类型"],
 
         
         
