@@ -43,11 +43,11 @@ export default {
             state.allNums = obj[0].distribution_nums;
             obj.forEach(element => {
                 state.haodafuAllPatientProvince.push({
-                    name: element.distribution_area,
+                    name: element.distribution_area.trim(),
                     value: element.distribution_nums,
                 });
                 state.haodafuAllPatientProvinceTable.push({
-                    area: element.distribution_area,
+                    area: element.distribution_area.trim(),
                     nums: element.distribution_nums,
                     percent: element.distribution_percent,
                 });
@@ -59,11 +59,11 @@ export default {
 
             obj.forEach(element => {
                 state.haodafuConsumerPatientProvince.push({
-                    name: element.distribution_area,
+                    name: element.distribution_area.trim(),
                     value: element.distribution_nums,
                 });
                 state.haodafuConsumerPatientProvinceTable.push({
-                    area: element.distribution_area,
+                    area: element.distribution_area.trim(),
                     nums: element.distribution_nums,
                     percent: element.distribution_percent,
                 });
@@ -73,7 +73,7 @@ export default {
         haodafuAllPatientCity(state, obj) {
             obj.forEach(element => {
                 state.haodafuAllPatientCityTable.push({
-                    area: element.distribution_area,
+                    area: element.distribution_area.trim(),
                     nums: element.distribution_nums,
                     percent: element.distribution_percent,
                 });
@@ -82,7 +82,7 @@ export default {
         haodafuConsumerPatientCity(state, obj) {
             obj.forEach(element => {
                 state.haodafuConsumerPatientCityTable.push({
-                    area: element.distribution_area,
+                    area: element.distribution_area.trim(),
                     nums: element.distribution_nums,
                     percent: element.distribution_percent,
                 });
