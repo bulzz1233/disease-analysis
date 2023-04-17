@@ -16,11 +16,7 @@ import search from '@/components/common/search.vue';
 import uTag from '@/components/common/uTag.vue';
 export default {
     data() {
-        return {
-
-
-
-        };
+        return {};
     },
     methods: {},
     computed: {
@@ -31,19 +27,19 @@ export default {
                 return this.$store.state.haodafuData.haodafuConsumerMedicalType;
             }
         },
-         r_list() {
-             if (this.$store.state.constVal.MedicalType) {
-                 return this.$store.state.haodafuPatientData.haodafuAllPatientProvince;
-             } else {
-                 return this.$store.state.haodafuPatientData.haodafuConsumerPatientProvince;
-             }
-         },
-        nums(){
-           if (this.$store.state.constVal.MedicalType) {
-                 return this.$store.state.haodafuPatientData.allNums;
-             } else {
-                 return this.$store.state.haodafuPatientData.consumerNums;
-             }
+        r_list() {
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.haodafuPatientData.haodafuAllPatientProvince;
+            } else {
+                return this.$store.state.haodafuPatientData.haodafuConsumerPatientProvince;
+            }
+        },
+        nums() {
+            if (this.$store.state.constVal.MedicalType) {
+                return this.$store.state.haodafuPatientData.allNums;
+            } else {
+                return this.$store.state.haodafuPatientData.consumerNums;
+            }
         },
         t_data() {
             if (this.$store.state.constVal.MedicalType) {
@@ -63,22 +59,20 @@ export default {
     },
     created() {
         Promise.all([
-                        this.$store.dispatch('haodafuPatientData/haodafuAllPatient'),
+            this.$store.dispatch('haodafuPatientData/haodafuAllPatient'),
 
             this.$store.dispatch('haodafuData/haodafuAllType'),
             this.$store.dispatch('haodafuData/haodafuConsumerMedicalType'),
             this.$store.dispatch('haodafuPatientData/haodafuConsumerPatient'),
         ]);
     },
-  mounted() {
-  },
-  components: {
+    mounted() {},
+    components: {
         china1,
         uTable,
         search,
         uTag,
     },
-
 };
 </script>
 <style scoped>
