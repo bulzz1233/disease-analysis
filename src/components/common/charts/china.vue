@@ -92,6 +92,11 @@ export default {
                 this.option.series[0].data = newVal;
             },
         },
+        nums:{
+            handler(newVal){
+                this.option.visualMap.max = newVal
+            }
+        }
     },
     props: ['list','nums'],
 };
