@@ -41,36 +41,42 @@ export default {
     },
     mutations: {
         haodafuAllPatientProvince(state, obj) {
-            obj.forEach(element => {
+
+            obj.forEach((element,index) => {
+
                 state.haodafuAllPatientProvince.push({
-                    name: element.distribution_area,
+                    name: element.distribution_area.slice(0,2),
                     value: element.distribution_nums,
                 });
                 state.haodafuAllPatientProvinceTable.push({
-                    area: element.distribution_area,
+                    area: element.distribution_area.slice(0,2),
                     nums: element.distribution_nums,
                     percent: element.distribution_percent,
                 });
             });
+                                    console.log( state.haodafuAllPatientProvince)
+
         },
         haodafuConsumerPatientProvince(state, obj) {
-            obj.forEach(element => {
+            obj.forEach((element,index) => {
+
                 state.haodafuConsumerPatientProvince.push({
-                    name: element.distribution_area,
+                    name: element.distribution_area.slice(0,2),
                     value: element.distribution_nums,
                 });
                 state.haodafuConsumerPatientProvinceTable.push({
-                    area: element.distribution_area,
+                    area: element.distribution_area.slice(0,2),
                     nums: element.distribution_nums,
                     percent: element.distribution_percent,
                 });
             });
+
         },
 
         haodafuAllPatientCity(state, obj) {
             obj.forEach(element => {
                 state.haodafuAllPatientCityTable.push({
-                    area: element.distribution_area,
+                    area: element.distribution_area.slice(0,2),
                     nums: element.distribution_nums,
                     percent: element.distribution_percent,
                 });
@@ -79,7 +85,7 @@ export default {
         haodafuConsumerPatientCity(state, obj) {
             obj.forEach(element => {
                 state.haodafuConsumerPatientCityTable.push({
-                    area: element.distribution_area,
+                    area: element.distribution_area.slice(0,2),
                     nums: element.distribution_nums,
                     percent: element.distribution_percent,
                 });
@@ -92,7 +98,8 @@ export default {
         //
         haodafuAllPatientProvince: [],
         haodafuConsumerPatientProvince: [],
-
+        allNums:0,
+        consumerNums:0,
         haodafuAllPatientCityTable: [],
         haodafuAllPatientProvinceTable: [],
         haodafuConsumerPatientProvinceTable: [],

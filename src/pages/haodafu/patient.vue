@@ -3,21 +3,23 @@
         <search class="a" />
         <u-tag class="a" :list="tag_list_data" />
         <div class="chart">
-            <china :list="r_list" />
+            <china1 :list="r_list" :nums="nums" />
             <u-table :tableData="t_data" />
         </div>
     </div>
 </template>
 
 <script>
-import china from '@/components/common/charts/china.vue';
+import china1 from '@/components/common/charts/china.vue';
 import uTable from '@/components/common/uTable.vue';
 import search from '@/components/common/search.vue';
 import uTag from '@/components/common/uTag.vue';
 export default {
     data() {
         return {
-            
+
+
+
         };
     },
     methods: {},
@@ -29,12 +31,19 @@ export default {
                 return this.$store.state.haodafuData.haodafuConsumerMedicalType;
             }
         },
-        r_list() {
-            if (this.$store.state.constVal.MedicalType) {
-                return this.$store.state.haodafuPatientData.haodafuAllPatientProvince;
-            } else {
-                return this.$store.state.haodafuPatientData.haodafuConsumerPatientProvince;
-            }
+         r_list() {
+             if (this.$store.state.constVal.MedicalType) {
+                 return this.$store.state.haodafuPatientData.haodafuAllPatientProvince;
+             } else {
+                 return this.$store.state.haodafuPatientData.haodafuConsumerPatientProvince;
+             }
+         },
+        nums(){
+           if (this.$store.state.constVal.MedicalType) {
+                 return this.$store.state.haodafuPatientData.allNums;
+             } else {
+                 return this.$store.state.haodafuPatientData.consumerNums;
+             }
         },
         t_data() {
             if (this.$store.state.constVal.MedicalType) {
@@ -54,19 +63,22 @@ export default {
     },
     created() {
         Promise.all([
+                        this.$store.dispatch('haodafuPatientData/haodafuAllPatient'),
+
             this.$store.dispatch('haodafuData/haodafuAllType'),
             this.$store.dispatch('haodafuData/haodafuConsumerMedicalType'),
-            this.$store.dispatch('haodafuPatientData/haodafuAllPatient'),
             this.$store.dispatch('haodafuPatientData/haodafuConsumerPatient'),
         ]);
     },
-    components: {
-        china,
+  mounted() {
+  },
+  components: {
+        china1,
         uTable,
         search,
         uTag,
     },
-    created() {},
+
 };
 </script>
 <style scoped>

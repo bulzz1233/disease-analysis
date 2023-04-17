@@ -6,7 +6,8 @@ export default {
         haodafuAllType(context){
             $api.haodafuAllType().then(
                 response=>{
-                    context.commit("addHaodafuAllType",response.data.data.data_object.illness_type_list)
+                    console.log(response)
+                    context.commit("addHaodafuAllType",response.data.data.data_object.diseaseKey_CN_list)
                 },
                 error=>{
                     alert(error.message)
@@ -16,7 +17,7 @@ export default {
         haodafuConsumerMedicalType(context){
             $api.haodafuConsumerMedicalType().then(
                 response=>{
-                    context.commit("addHaodafuConsumerMedicalType",response.data.data.data_object.illness_type_list)
+                    context.commit("addHaodafuConsumerMedicalType",response.data.data.data_object.diseaseKey_CN_list)
                 },
                 error=>{
                     alert(error.message)

@@ -4,7 +4,7 @@ import axios from 'axios';
 axios.defaults.headers['Content-Type'] = 'application/json';
 const request = axios.create({
     baseURL: '/api',
-    timeout: 6000,
+    timeout: 100000,
 });
 // //请求拦截器
 // request.interceptors.request.use((config)=>{

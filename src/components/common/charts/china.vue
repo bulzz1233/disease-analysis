@@ -9,12 +9,13 @@ import '@/assets/charts/china.js';
 import VChart from 'vue-echarts';
 
 export default {
-    name: 'china',
+    name: 'china1',
     components: {
         VChart,
     },
     data() {
         return {
+
             option: {
                 title: {
                     text: '好大夫-评价患者分布地区分析',
@@ -31,7 +32,7 @@ export default {
                 // 热力地图
                 visualMap: {
                     min: 0,
-                    max: this.list[0].value,
+                    max: this.nums,
                     calculable: true,
                     orient: 'vertical',
                     left: '1%',
@@ -76,12 +77,13 @@ export default {
                     },
                 ],
             },
+
         };
     },
     mounted() {
-        this.$nextTick(() => {
-            console.log(this.option);
-        });
+
+
+
     },
     watch: {
         list: {
@@ -91,7 +93,7 @@ export default {
             },
         },
     },
-    props: ['list'],
+    props: ['list','nums'],
 };
 </script>
 <style scoped>
