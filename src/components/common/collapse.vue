@@ -2,7 +2,7 @@
     <div class="layout">
         <div @click="goHome()" class="goHome">主页</div>
         <el-collapse v-model="activeNames" @change="handleChange">
-            <el-collapse-item title="春雨医生平台分析" name="2">
+            <el-collapse-item title=" X 平台分析" name="2">
                 <ul class="list">
                     <li
                         class="list_item"
@@ -15,7 +15,7 @@
                     </li>
                 </ul>
             </el-collapse-item>
-            <el-collapse-item title="好大夫平台分析" name="3">
+            <el-collapse-item title=" Y 平台分析" name="3">
                 <li
                     class="list_item"
                     :class="{ active: index + 4 == isActive }"

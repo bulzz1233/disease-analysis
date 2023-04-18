@@ -32,7 +32,7 @@ export default {
 
             line_choose: 16,
 
-            line_name: '春雨医生-全部疾病TOP10时间分布折线图',
+            line_name: 'X平台-全部疾病TOP10时间分布折线图',
             line_Axis: [
                 '1月',
                 '2月',
@@ -54,7 +54,7 @@ export default {
                 { name: '最多评价类型数', num: 15, style: '#ff9502' },
                 { name: '最多评价分布数', num: 16, style: '#34c758' },
             ],
-            bar_name: '春雨医生-全部疾病数量TOP10',
+            bar_name: 'X平台-全部疾病数量TOP10',
             bar_xAxis: [],
 
             ////

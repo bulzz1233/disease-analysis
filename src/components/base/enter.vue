@@ -7,21 +7,22 @@
         <div class="content">
             <div class="chunyu">
                 <div class="BFC">
-                    <img class="logo" src="@/assets/img/chunyuLogo.png" />
+                    <div class="title1">X平台</div>
                 </div>
 
                 <div class="chunyu_detail">
-                    春雨在线问诊,以真实临床医生手机接诊,涵盖全部17个一级科室,每天7x24小时,每次3分钟之内响应,是家庭医生、分级诊疗和慢病管理的主要入口。
+                    X平台在线问诊,以真实临床医生手机接诊,涵盖全部17个一级科室,每天7x24小时,每次3分钟之内响应,是家庭医生、分级诊疗和慢病管理的主要入口。
                 </div>
             </div>
             <div class="line"></div>
             <div class="chunyu">
                 <div class="BFC">
-                    <img class="logo" src="@/assets/img/haoDaFu-Logo.png" />
+                    <div class="title1">Y平台</div>
+
                 </div>
 
                 <div class="chunyu_detail">
-                    基于分析中国患者的需求,好大夫在线创建了实时更新的互联网医生数据库、专业的网上分诊系统、互联网院后疾病管理和线上复诊服务、远程专家门诊服务等等。
+                    基于分析中国患者的需求,Y平台在线创建了实时更新的互联网医生数据库、专业的网上分诊系统、互联网院后疾病管理和线上复诊服务、远程专家门诊服务等等。
                 </div>
             </div>
 
@@ -60,6 +61,15 @@ export default {
     color: #64927c;
     letter-spacing: 0.5rem;
     font-size: 4rem;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title1 {
+    color: #64927c;
+    letter-spacing: 0.5rem;
+    font-size: 3rem;
     font-weight: bolder;
     display: flex;
     flex-direction: column;

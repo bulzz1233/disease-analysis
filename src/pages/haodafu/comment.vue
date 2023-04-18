@@ -79,8 +79,8 @@ export default {
                 { name: '最多评价分布数', num: 16, style: '#34c758' },
             ],
             /////////////
-            bar_name: '好大夫-全部疾病数量TOP15评价类型数量分布',
-            h_bar_name: '好大夫-全部疾病数量TOP15',
+            bar_name: 'Y平台-全部疾病数量TOP15评价类型数量分布',
+            h_bar_name: 'Y平台-全部疾病数量TOP15',
             bar_xAxis: [],
 
             //堆叠柱状图
@@ -88,7 +88,7 @@ export default {
             v_bar_xAxis: ['不满意', '一般', '满意', '很满意'],
 
             ////折线图
-            line_name: '好大夫-全部疾病TOP15时间分布折线图',
+            line_name: 'Y平台-全部疾病TOP15时间分布折线图',
             line_Axis: [
                 '1月',
                 '2月',
@@ -105,7 +105,7 @@ export default {
             ],
 
             ///
-            pie_name: '好大夫平台-全部疾病数量TOP15评价类型数量分布',
+            pie_name: 'Y平台-全部疾病数量TOP15评价类型数量分布',
             pie_choose: 0,
             vbar_choose: 0,
         };

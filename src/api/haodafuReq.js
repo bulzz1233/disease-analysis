@@ -36,3 +36,15 @@ export function haodafuConsumerPatient() {
         url:'/haodf/patientDistrict/consumer_medical'
     })
 }
+export function haodafuWordAll() {
+    return request({
+        method:'GET',
+        url:'/haodf/wordcloud/all'
+    })
+}
+export function haodafuWordConsumer() {
+    return request({
+        method:'GET',
+        url:'/haodf/wordcloud/consumer_medical'
+    })
+}
