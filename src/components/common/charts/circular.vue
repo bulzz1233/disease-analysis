@@ -51,13 +51,7 @@ export default {
                         labelLine: {
                             show: false,
                         },
-                        data: [
-                            { value: 1048, name: 'Search Engine' },
-                            { value: 735, name: 'Direct' },
-                            { value: 580, name: 'Email' },
-                            { value: 484, name: 'Union Ads' },
-                            { value: 300, name: 'Video Ads' },
-                        ],
+                        data:this.list,
                     },
                 ],
             },
@@ -66,6 +60,15 @@ export default {
     methods: {
         chartsResize() {
             this.$refs.s.resize();
+        },
+    },
+           watch: {
+        list: {
+            deep: true,
+            handler(newVal) {
+                this.option.series.data= newVal;
+                this.$refs.s.setOption(this.option, true);
+            },
         },
     },
      mounted(){
@@ -80,7 +83,7 @@ export default {
     beforeDestroy() {
         window.removeEventListener('resize', this.chartsResize, false);
     },
-    props: ['name'],
+    props: ['name','list'],
 };
 </script>
 <style scoped>

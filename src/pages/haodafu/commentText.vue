@@ -61,10 +61,6 @@ export default {
     },
     created() {
                 Promise.all([
-            this.$store.dispatch('haodafuData/haodafuAllType'),
-            this.$store.dispatch('haodafuData/haodafuConsumerMedicalType'),
-
-
             this.$store.dispatch('haodafuWordData/allWord'),
             this.$store.dispatch('haodafuWordData/consumerWord'),
             

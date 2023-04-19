@@ -18,7 +18,7 @@ export default {
 
             option: {
                 title: {
-                    text: '好大夫-评价患者分布地区分析',
+                    text: 'Y平台-评价患者分布地区分析',
                     textStyle: {
                         fontSize: 25,
                     },

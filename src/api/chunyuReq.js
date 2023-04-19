@@ -38,3 +38,15 @@ export function chunyuWordConsumer() {
         url:'/chunyu/wordcloud/consumer_medical'
     })
 } 
+export function chunyuTopicAll() {
+    return request({
+        method:'GET',
+        url:'/chunyu/lda/all'
+    })
+} 
+export function chunyuTopicConsumer() {
+    return request({
+        method:'GET',
+        url:'/chunyu/lda/consumer_medical'
+    })
+} 

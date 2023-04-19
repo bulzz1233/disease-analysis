@@ -3,9 +3,9 @@
         <div class="head">
             <div class="title">在线问诊文本挖掘与数据分析系统</div>
             <div class="radio_layout">
-                <el-radio-group   class="radio" v-model="radio1" @change="changeType()">
-                    <el-radio-button   label="全部类型"></el-radio-button>
-                    <el-radio-button   label="消费医疗"></el-radio-button>
+                <el-radio-group class="radio" v-model="radio1" @change="changeType()">
+                    <el-radio-button label="全部类型"></el-radio-button>
+                    <el-radio-button label="消费医疗"></el-radio-button>
                 </el-radio-group>
             </div>
         </div>
@@ -36,13 +36,20 @@ export default {
         };
     },
     methods: {
-        changeType(){
+        changeType() {
             //commit直接访问mutation
             this.$store.commit('constVal/changeTpye');
             console.log(this.$store.state.constVal.MedicalType);
-        }
+        },
     },
-    mounted() {},
+    created() {
+        Promise.all([
+            this.$store.dispatch('haodafuData/haodafuAllType'),
+            this.$store.dispatch('haodafuData/haodafuConsumerMedicalType'),
+            this.$store.dispatch('chunyuData/chunyuAllType'),
+            this.$store.dispatch('chunyuData/chunyuConsumerMedicalType'),
+        ]);
+    },
 
     components: {
         collapse,

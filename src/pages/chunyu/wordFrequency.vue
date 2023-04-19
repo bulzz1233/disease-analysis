@@ -63,8 +63,7 @@ export default {
   
     created() {
         Promise.all([
-            this.$store.dispatch('chunyuData/chunyuAllType'),
-            this.$store.dispatch('chunyuData/chunyuConsumerMedicalType'),
+          
             this.$store.dispatch('chunyuWordData/allWord'),
             this.$store.dispatch('chunyuWordData/consumerWord'),
             

@@ -8,6 +8,7 @@ import chunyuWordData from './chunyu/chunyuWord';
 import haodafuData from './haodafu/haodafu';
 import haodafuPatientData from './haodafu/haodafuPatient';
 import haodafuWordData from './haodafu/haodafuWord';
+import chunyuTopicData from './chunyu/chunyuTopic';
 
 Vue.use(Vuex);
 export default new Vuex.Store({
@@ -17,6 +18,7 @@ export default new Vuex.Store({
         constVal,
         chunyuDistributionData,
         chunyuWordData,
+        chunyuTopicData,
         haodafuData,
         haodafuPatientData,
         haodafuWordData,

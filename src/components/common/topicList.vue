@@ -25,12 +25,8 @@ export default {
     name: 'topicList',
     data() {
         return {
-            list_data: [
-                { name: 'Topic1', word: ['对的', '不对', 'duidui'] },
-                { name: 'Topic2', word: ['的', '不对', 'duidui'] },
-                { name: 'Topic3', word: ['对ff的', 't对', 'duidui'] },
-            ],
-            activeNames: ['0'],
+           
+            activeNames: 0,
         };
     },
     methods: {
@@ -38,6 +34,7 @@ export default {
             console.log(val);
         },
     },
+    props:['list_data']
 };
 </script>
 <style scoped>
@@ -63,7 +60,6 @@ export default {
 .col{
     margin-top:2rem ;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    margin-right:6rem ;
 
     /* padding-right:6rem ; */
 }
