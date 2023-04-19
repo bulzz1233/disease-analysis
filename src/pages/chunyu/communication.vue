@@ -171,7 +171,13 @@ export default {
         vbar,
         pie,
     },
-    mounted() {},
+        created() {
+                Promise.all([
+            this.$store.dispatch('chunyuTextData/chunyuAllText'),
+            this.$store.dispatch('chunyuTextData/chunyuConsumerText'),
+            
+        ]);
+    },
 };
 </script>
 <style scoped>
