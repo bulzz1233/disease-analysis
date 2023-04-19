@@ -45,7 +45,13 @@ export default {
             }
         },
     },
-    created() {},
+    created() {
+                 Promise.all([
+            this.$store.dispatch('chunyuTopicData/chunyuTopicAll'),
+            this.$store.dispatch('chunyuTopicData/chunyuTopicComsumer'),
+            
+        ])
+    },
 };
 </script>
 <style scoped>

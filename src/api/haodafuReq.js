@@ -48,3 +48,15 @@ export function haodafuWordConsumer() {
         url:'/haodf/wordcloud/consumer_medical'
     })
 }
+export function haodafuTopicAll() {
+    return request({
+        method:'GET',
+        url:'/haodf/lda/all'
+    })
+} 
+export function haodafuTopicConsumer() {
+    return request({
+        method:'GET',
+        url:'/haodf/lda/consumer_medical'
+    })
+} 
