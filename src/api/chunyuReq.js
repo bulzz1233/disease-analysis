@@ -16,6 +16,7 @@ export function chunyuConsumerMedicalType() {
 export function chunyuDistributionAll() {
     return request({
         method:'GET',
+
         url:'/chunyu/distribute/all'
     })
 }
