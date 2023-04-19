@@ -69,6 +69,7 @@ export default {
     color: white;
     border-radius: 5px;
     padding: .7rem;
+  margin-top: 0.8rem;
 }
 
 ::v-deep .el-collapse-item__header {

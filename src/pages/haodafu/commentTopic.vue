@@ -65,7 +65,7 @@ export default {
 .chart_layout {
     display: flex;
     width: 100%;
-    height: 80%;
+    height: 50%;
     justify-content: space-around;
     align-items: center;
 }

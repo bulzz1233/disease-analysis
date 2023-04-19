@@ -6,7 +6,8 @@ export default {
         chunyuTopicAll(context){
             $api.chunyuTopicAll().then(
                 response=>{
-                    context.commit("chunyuTopicAll",response.data.data.data_object.topic_high_frenquent_word_list)
+                    console.log(response)
+                    context.commit("chunyuTopicAll",response.data.data.data_object.topic_high_frequent_word_list)
                     context.commit("chunyuCircularAll",response.data.data.data_object.topic_nums_list)
 
                 },
@@ -18,7 +19,7 @@ export default {
         chunyuTopicComsumer(context){
             $api.chunyuTopicConsumer().then(
                 response=>{
-                    context.commit("chunyuTopicComsumer",response.data.data.data_object.topic_high_frenquent_word_list)
+                    context.commit("chunyuTopicComsumer",response.data.data.data_object.topic_high_frequent_word_list)
                     context.commit("chunyuCircularComsumer",response.data.data.data_object.topic_nums_list)
 
                 },
@@ -30,7 +31,8 @@ export default {
     },
     mutations: {
         chunyuTopicAll(state,obj){
-            obj.forEach((element,index)=>{
+            console.log(obj)
+            obj.forEach(element=>{
                 let arry = []
                 element.word_list.forEach(item=>{
                     arry.push(`${item.word}(${item.percent})`)

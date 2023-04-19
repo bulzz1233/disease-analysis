@@ -6,7 +6,7 @@ export default {
         haodafuTopicAll(context){
             $api.haodafuTopicAll().then(
                 response=>{
-                    context.commit("haodafuTopicAll",response.data.data.data_object.topic_high_frenquent_word_list)
+                    context.commit("haodafuTopicAll",response.data.data.data_object.topic_high_frequent_word_list)
                     context.commit("haodafuCircularAll",response.data.data.data_object.topic_nums_list)
 
                 },
@@ -18,7 +18,7 @@ export default {
         haodafuTopicComsumer(context){
             $api.haodafuTopicConsumer().then(
                 response=>{
-                    context.commit("haodafuTopicComsumer",response.data.data.data_object.topic_high_frenquent_word_list)
+                    context.commit("haodafuTopicComsumer",response.data.data.data_object.topic_high_frequent_word_list)
                     context.commit("haodafuCircularComsumer",response.data.data.data_object.topic_nums_list)
 
                 },

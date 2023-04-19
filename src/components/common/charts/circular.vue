@@ -62,11 +62,11 @@ export default {
             this.$refs.s.resize();
         },
     },
-           watch: {
+  watch: {
         list: {
             deep: true,
             handler(newVal) {
-                this.option.series.data= newVal;
+                this.option.series[0].data= newVal;
                 this.$refs.s.setOption(this.option, true);
             },
         },

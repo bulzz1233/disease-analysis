@@ -49,8 +49,9 @@ export default {
                  Promise.all([
             this.$store.dispatch('chunyuTopicData/chunyuTopicAll'),
             this.$store.dispatch('chunyuTopicData/chunyuTopicComsumer'),
-            
         ])
+            console.log(     this.$store.state.chunyuTopicData.circular_all_list)
+            console.log(this.$store.state.chunyuTopicData.circular_consumer_list)
     },
 };
 </script>
@@ -65,7 +66,7 @@ export default {
 .chart_layout {
     display: flex;
     width: 100%;
-    height: 80%;
+    height: 50%;
     justify-content: space-around;
     align-items: center;
 }
