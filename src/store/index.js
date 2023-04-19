@@ -10,6 +10,7 @@ import haodafuPatientData from './haodafu/haodafuPatient';
 import haodafuWordData from './haodafu/haodafuWord';
 import chunyuTopicData from './chunyu/chunyuTopic';
 import haodafuTopicData from './haodafu/haodafuTopic';
+import chunyuTextData from './chunyu/chunyuText';
 Vue.use(Vuex);
 export default new Vuex.Store({
     modules: {
@@ -22,6 +23,7 @@ export default new Vuex.Store({
         haodafuData,
         haodafuPatientData,
         haodafuWordData,
-        haodafuTopicData
+        haodafuTopicData,
+        chunyuTextData
     },
 });

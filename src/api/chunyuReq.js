@@ -50,3 +50,15 @@ export function chunyuTopicConsumer() {
         url:'/chunyu/lda/consumer_medical'
     })
 } 
+export function chunyuTextAll() {
+    return request({
+        method:'GET',
+        url:'/chunyu/inquiry/all'
+    })
+} 
+export function chunyuTextConsumer() {
+    return request({
+        method:'GET',
+        url:'/chunyu/inquiry/consumer_medical'
+    })
+} 

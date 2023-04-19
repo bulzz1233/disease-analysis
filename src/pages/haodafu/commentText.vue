@@ -2,11 +2,10 @@
     <div class="layout">
         <search />
         <u-tag :list="tag_list_data" />
-        <scatter-chart 
-         :list='scatter_list'
-        :Axis='scatter_type'
-        />
-        <word :list="word_list"/>
+        <div class="chart_layout">
+            <scatter-chart class="scatter" :list="scatter_list" :Axis="scatter_type" />
+            <word class="word" :list="word_list" />
+        </div>
     </div>
 </template>
 
@@ -75,5 +74,24 @@ export default {
     width: 100%;
     height: 100%;
 }
+.scatter {
+    height: 40%;
+    width: 90%;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+.word {
+    width: 90%;
 
+    height: 40%;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+.chart_layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
 </style>

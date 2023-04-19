@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class='title'>x疾病-高频词云图</div>
+    <div class="layout">
+        <div class='title'>高频词云图</div>
     <wordcloud
         :data="defaultWords"
         nameKey="name"
@@ -53,7 +53,11 @@ export default {
     font-size: 20px;
     font-weight: bolder;
     color: #464646;
-    margin-left: 4rem;
+}
+.layout{
+     padding-top: 3rem;
+    padding-left: 3rem;
+
 }
 
 </style>

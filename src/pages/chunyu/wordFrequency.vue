@@ -2,11 +2,10 @@
     <div class="layout">
         <search />
         <u-tag :list="tag_list_data" />
-        <scatter-chart 
-        :list='scatter_list'
-        :Axis='scatter_type'
-        />
-        <word :list="word_list"/>
+        <div class="chart_layout">
+            <scatter-chart class="scatter" :list="scatter_list" :Axis="scatter_type" />
+            <word class="word" :list="word_list" />
+        </div>
     </div>
 </template>
 
@@ -17,9 +16,7 @@ import uTag from '@/components/common/uTag.vue';
 import word from '@/components/common/word.vue';
 export default {
     data() {
-        return {
-
-        };
+        return {};
     },
     methods: {},
     computed: {
@@ -37,22 +34,20 @@ export default {
                 return this.$store.state.chunyuWordData.word_consumer_scatter_type;
             }
         },
-        scatter_list(){
+        scatter_list() {
             if (this.$store.state.constVal.MedicalType) {
-                return this.$store.state.chunyuWordData.word_all_scatter_list
+                return this.$store.state.chunyuWordData.word_all_scatter_list;
             } else {
-                return this.$store.state.chunyuWordData.word_consumer_scatter_list
-                
+                return this.$store.state.chunyuWordData.word_consumer_scatter_list;
             }
         },
-        word_list(){
+        word_list() {
             if (this.$store.state.constVal.MedicalType) {
-                return this.$store.state.chunyuWordData.word_all_list
+                return this.$store.state.chunyuWordData.word_all_list;
             } else {
-                return this.$store.state.chunyuWordData.word_consumer_list
-                
+                return this.$store.state.chunyuWordData.word_consumer_list;
             }
-        }
+        },
     },
     components: {
         scatterChart,
@@ -60,13 +55,11 @@ export default {
         uTag,
         word,
     },
-  
+
     created() {
         Promise.all([
-          
             this.$store.dispatch('chunyuWordData/allWord'),
             this.$store.dispatch('chunyuWordData/consumerWord'),
-            
         ]);
     },
 };
@@ -75,6 +68,26 @@ export default {
 .layout {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.scatter {
+    height: 40%;
+    width: 90%;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+.word {
+    width: 90%;
+
+    height: 40%;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+.chart_layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
 }

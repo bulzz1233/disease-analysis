@@ -18,7 +18,7 @@ export default {
         return {
             option: {
                 title: {
-                    text: 'x疾病-高频词TOP30',
+                    text: '高频词TOP30',
                     // subtext: 'Fake Data',
                 },
                 xAxis: {
