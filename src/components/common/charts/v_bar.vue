@@ -38,7 +38,7 @@ export default {
                 },
                 legend: {
                     // data: [],
-                    right: '1%',
+                    right: 'center',
                     top: '5%',
                 },
                 xAxis: {

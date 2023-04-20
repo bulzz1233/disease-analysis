@@ -1,7 +1,7 @@
 <template>
     <div class="layout">
-        <search />
-        <u-tag :list="tag_list_data" />
+        <search class="style" />
+        <u-tag class="style"  :list="tag_list_data" />
         <div class="chart_layout">
             <scatter-chart class="scatter" :list="scatter_list" :Axis="scatter_type" />
             <word class="word" :list="word_list" />
@@ -90,5 +90,8 @@ export default {
     align-items: center;
     width: 100%;
     height: 100%;
+}
+.style{
+  margin-left:1rem ;
 }
 </style>

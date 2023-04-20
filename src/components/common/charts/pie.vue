@@ -31,8 +31,8 @@ export default {
                     // formatter: '{a} <br/>{b} : {c} ({d}%)',
                 },
                 legend: {
-                    right: '1%',
-                    top: '5%',
+                    right: '4%',
+                    top: '6%',
 
                     // data: [],
                 },
@@ -43,7 +43,7 @@ export default {
                         //半径
                         radius: '65%',
                         //圆心位置
-                        center: ['50%', '55%'],
+                        center: ['50%', '60%'],
                         //传数据
                         data: this.list,
                         emphasis: {

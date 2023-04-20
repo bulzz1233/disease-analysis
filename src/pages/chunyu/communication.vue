@@ -1,18 +1,14 @@
 <template>
     <div class="layout">
-        <search />
+        <search class="search" />
         <u-tag :list="tag_list_data" />
         <div class="num">
             <num-count :list="num_list" />
         </div>
         <div class="chart_layout">
-            <div class="pie">
-                <pie :list="pie_list" :name="circular" />
-            </div>
+                <pie class="pie" :list="pie_list" :name="circular" />
             <div class="line"></div>
-            <div class="vbar">
-                <vbar :name="bar_name" :xAxis="v_bar_xAxis" :yAxis="bar_xAxis" :list="vbar_list" />
-            </div>
+                <vbar class="vbar" :name="bar_name" :xAxis="v_bar_xAxis" :yAxis="bar_xAxis" :list="vbar_list" />
         </div>
         <div class="table_layout">
             <div class="title">问诊对话详情分析</div>
@@ -22,7 +18,11 @@
                     label="问诊ID"
                     header-align="center"
                     align="center"
-                    width="100"
+                ></el-table-column>   <el-table-column
+                    prop="inquiry_time"
+                    label="问诊时间"
+                    header-align="center"
+                    align="center"
                 ></el-table-column>
                 <el-table-column
                     prop="inquiry_title"
@@ -184,28 +184,34 @@ export default {
 .layout {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
+  align-items: center;
     height: 100%;
-    overflow: scroll;
+  width: 100%;
+  justify-content: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 .chart_layout {
     display: flex;
-    height: 100%;
-    width: 95%;
+    height:200vh;
+  width: 90%;
+    max-width: 91.5%;
     justify-content: space-around;
     align-items: center;
+  padding: 2rem;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-padding-top: 1rem;
 }
-.pie {
-    height: 100%;
-    width: 47.5%;
+.pie{
+  width: 50%;
 }
-.vbar {
-    height: 100%;
-    width: 47.5%;
+.vbar{
 
+     width: 50%;
+
+}
+
+.search{
+  margin-top: 18rem;
 }
 .table {
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
@@ -221,9 +227,10 @@ padding-top: 1rem;
 }
 .table_layout {
     padding: 4rem;
-    width: 95%;
+    width: 91.5%;
     height: 100%;
     display: flex;
+  margin-bottom: 3rem;
     flex-direction: column;
 }
 .num {
@@ -231,6 +238,7 @@ padding-top: 1rem;
     width: 100%;
     justify-content: center;
     align-items: center;
+  margin-top: 0;
 }
 .line{
     height: 90%;

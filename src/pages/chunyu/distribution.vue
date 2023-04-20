@@ -124,7 +124,7 @@ export default {
 }
 .charts_layout {
     display: flex;
-    width: 98%;
+    width: 91.5%;
     height: 100%;
     flex-direction: column;
     justify-content: center;
