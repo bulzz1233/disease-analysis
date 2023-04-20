@@ -1,6 +1,6 @@
 <template>
         <ul class="list_style">
-            <li class="list" v-for="(o,index) in list" :key="index">
+            <li class="list" v-for="(o,index) in list_data" :key="index">
                 <i :style="{background:o.style}" class=" icon el-icon-s-data"></i>
                 <div class="content">
                     <div :style="{color:o.style}" class="num">{{o.num}}</div>
@@ -14,10 +14,18 @@ export default {
     name:'numCount',
     data() {
         return {
-            
+            list_data:this.list
         };
     },
     methods: {},
+        watch: {
+          list: {
+            deep: true,
+            handler(newVal) {
+                this.list_data = newVal;
+            },
+        },
+    },
     created() {},
     props:['list']
 };

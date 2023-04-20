@@ -16,7 +16,7 @@
                     <span class="title_layout">年份：</span>
                     <el-select class="select" v-model="line_choose" placeholder="请选择">
                         <el-option
-                            v-for="(item,index) in line_options"
+                            v-for="(item, index) in line_options"
                             :key="item"
                             :label="item"
                             :value="index"
@@ -72,12 +72,6 @@ export default {
 
             line_choose: 16,
             //num_list
-            list: [
-                { name: '疾病类型数', num: 11, style: '#007aff' },
-                { name: '最多评价疾病数', num: 14, style: '#ff3a30' },
-                { name: '最多评价类型数', num: 15, style: '#ff9502' },
-                { name: '最多评价分布数', num: 16, style: '#34c758' },
-            ],
             /////////////
             bar_name: 'Y平台-全部疾病数量TOP10评价类型数量分布',
             h_bar_name: 'Y平台-全部疾病数量TOP10',
@@ -119,6 +113,25 @@ export default {
     },
 
     computed: {
+        list() {
+            let a = [
+                { name: '疾病类型数', num: 1194, style: '#007aff' },
+                { name: '最多评价疾病数', num: 95564, style: '#ff3a30' },
+                { name: '最多评价类型数', num: 4802067, style: '#ff9502' },
+                { name: '最多评价分布数', num: 130114, style: '#34c758' },
+            ];
+            let b = [
+                { name: '疾病类型数', num: 183, style: '#007aff' },
+                { name: '最多评价疾病数', num: 69283, style: '#ff3a30' },
+                { name: '最多评价类型数', num: 877163, style: '#ff9502' },
+                { name: '最多评价分布数', num: 30942, style: '#34c758' },
+            ];
+            if (this.$store.state.constVal.MedicalType) {
+                return a;
+            } else {
+                return b;
+            }
+        },
         MedicalType() {
             return this.$store.state.constVal.MedicalType;
         },
@@ -138,8 +151,8 @@ export default {
             }
         },
         //折线图
-         line_options() {
-              if (this.$store.state.constVal.MedicalType) {
+        line_options() {
+            if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.haodafuCommentData.comment_all_line_option;
             } else {
                 return this.$store.state.haodafuCommentData.comment_consumer_line_option;
@@ -170,7 +183,7 @@ export default {
                     this.vbar_type[this.vbar_choose]
                 ];
             } else {
-              console.log(22)
+                console.log(22);
                 return this.$store.state.haodafuCommentData.comment_consumer_v_bar_list[
                     this.vbar_type[this.vbar_choose]
                 ];
@@ -197,13 +210,10 @@ export default {
         },
     },
     mounted() {
-      console.log(this.line_options)
-       console.log(this.$store.state.haodafuCommentData.coomment_all_line_list
-                )
+        console.log(this.line_options);
+        console.log(this.$store.state.haodafuCommentData.coomment_all_line_list);
     },
-    watch: {
-
-    },
+    watch: {},
     components: {
         numCount,
         bar,

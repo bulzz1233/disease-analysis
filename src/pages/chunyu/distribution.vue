@@ -10,7 +10,7 @@
 
                 <el-select class="select" v-model="line_choose" placeholder="请选择">
                     <el-option
-                        v-for="(item,index) in line_options"
+                        v-for="(item, index) in line_options"
                         :key="item"
                         :label="item"
                         :value="index"
@@ -29,7 +29,6 @@ export default {
     name: 'distribution',
     data() {
         return {
-
             line_choose: 16,
 
             line_name: 'X平台-全部疾病TOP10时间分布折线图',
@@ -48,12 +47,6 @@ export default {
                 '12月',
             ],
 
-            list: [
-                { name: '疾病类型数', num: 11, style: '#007aff' },
-                { name: '最多评价疾病数', num: 14, style: '#ff3a30' },
-                { name: '最多评价类型数', num: 15, style: '#ff9502' },
-                { name: '最多评价分布数', num: 16, style: '#34c758' },
-            ],
             bar_name: 'X平台-全部疾病数量TOP10',
             bar_xAxis: [],
 
@@ -63,8 +56,26 @@ export default {
     methods: {},
 
     computed: {
-             line_options() {
-              if (this.$store.state.constVal.MedicalType) {
+        list() {
+            let a = [
+                { name: '疾病类型数', num: 1547, style: '#007aff' },
+                { name: '最多问诊疾病数', num: 748301, style: '#ff3a30' },
+                { name: '最多问诊科室数', num: 226417, style: '#ff9502' },
+            ];
+            let b = [
+                { name: '疾病类型数', num: 142, style: '#007aff' },
+                { name: '最多问诊疾病数', num: 351063, style: '#ff3a30' },
+                { name: '最多问诊科室数', num: 78911, style: '#ff9502' },
+            ];
+
+            if (this.$store.state.constVal.MedicalType) {
+                return a;
+            } else {
+                return b;
+            }
+        },
+        line_options() {
+            if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.chunyuDistributionData.distribution_all_line_option;
             } else {
                 return this.$store.state.chunyuDistributionData.distribution_consumer_line_option;
@@ -84,7 +95,7 @@ export default {
                 return this.$store.state.chunyuDistributionData.distribution_consumer_bar;
             }
         },
- line_list() {
+        line_list() {
             if (this.$store.state.constVal.MedicalType) {
                 return this.$store.state.chunyuDistributionData.distribution_all_line_list[
                     this.line_options[this.line_choose]
@@ -101,10 +112,10 @@ export default {
             this.$store.dispatch('chunyuDistributionData/allDistribution'),
             this.$store.dispatch('chunyuDistributionData/consumerDistribution'),
         ]);
-    this.line_choose = 0
+        this.line_choose = 0;
     },
     mounted() {
-      console.log(this.$store.state.chunyuDistributionData.distribution_consumer_line_list)
+        console.log(this.$store.state.chunyuDistributionData.distribution_consumer_line_list);
     },
     components: {
         numCount,
